@@ -12,7 +12,7 @@
     "url": "git+https://github.com/cenikk/datingapp.git"
   },
   "author": "Kaan",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "camelcase": "^5.0.0"
   },
