@@ -1,0 +1,157 @@
+:root {
+    --textColor: #F6F6F6;
+    --inputFieldColor: #F0DEE0;
+    --buttonColor: #F0C7DC;
+}
+
+body {
+    font-family: proxima-nova, sans-serif;
+    max-width: 70rem;
+    margin: auto; padding: 0;
+    height: 100vh;
+    background: -moz-linear-gradient(-45deg, #de6c5f 0%, #ca5e7e 100%);
+    background: -webkit-linear-gradient(-45deg, #de6c5f 0%,#ca5e7e 100%); 
+    background: linear-gradient(135deg, #de6c5f 10%,#ca5e7e 100%);
+    overflow: hidden;
+    color: var(--textColor);
+}
+
+header {
+    margin-top: 2rem;
+}
+
+nav ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, auto));
+    justify-items: center;
+    align-items: flex-start;
+    margin: 0; padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    list-style-type: none;
+    font-size: 2rem; 
+    font-weight: bold;
+}
+
+nav ul li:nth-child(1) { justify-self: flex-start; }
+nav ul li:nth-child(3) { justify-self: flex-end; }
+
+i {
+    color: var(--textColor);
+}
+
+img[alt="logo"] {
+    width: 4rem;
+}
+
+main {
+    font-weight: bold;
+    margin-top: 4rem;
+}
+
+main form {
+    display: grid;
+    justify-items: center;
+    color: var(--textColor);
+    position: relative;
+}
+
+main form legend {
+    font-size: 2rem;
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 4rem;
+}
+
+main form label {
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-bottom: .4rem;
+}
+
+main form input {
+    background-color: var(--inputFieldColor);
+    width: 24rem;
+    height: 1.7rem;
+    padding: .7rem;
+    font-size: 1.3rem;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 1300px) {
+    nav ul li:nth-child(1) { justify-self: center; transition: .4s linear;}
+    nav ul li:nth-child(3) { justify-self: center; transition: .4s linear;}
+}
+
+.select_gender, .select_gender div {
+    display: grid;
+    justify-items: center;
+    position: relative;
+    min-width: 25.3rem;
+}
+
+.select_gender div {
+    background-color: var(--inputFieldColor);
+}
+
+.select_gender div input {
+    position: relative;
+    right: 11rem; top: 1rem;
+}
+
+.select_gender div label {
+    position: absolute;
+    left: 3rem; top: 1rem;
+    color: #3C3C3B;
+    font-weight: lighter;
+}
+
+.select_gender div:nth-child(2) {
+    border-bottom: 1px solid #B2B2B2;
+    border-top-left-radius: 5px; border-top-right-radius: 5px;
+}
+
+.select_gender div:nth-child(3) { 
+    border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; 
+    margin-bottom: 2rem;
+}
+
+.select_dateofbirth, .select_dateofbirth div {
+    display: grid;
+    justify-items: center;
+    position: relative;
+}
+
+.select_dateofbirth div {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1rem;
+    max-width: 25.4rem;
+}
+
+.select_dateofbirth div input {
+    width: 78%;
+    padding: .6rem .8rem;
+}
+
+main form p {
+    font-size: 1rem;
+    font-weight: lighter;
+    font-style: italic;
+    margin-top: 3rem;
+    margin-bottom: .5rem;
+}
+
+button[type="submit"] {
+    min-width: 25.3rem;
+    padding: .7rem;
+    font-size: 1.5rem;
+    letter-spacing: 0.3px;
+    color: #3C3C3B;
+    background-color: var(--buttonColor);
+    border: none;
+    border-radius: 5px;
+}
