@@ -100,7 +100,7 @@ main form input {
 
 .select_gender div input {
     position: relative;
-    right: 11rem; top: 1rem;
+    right: 0rem; top: 1rem;
 }
 
 .select_gender div label {

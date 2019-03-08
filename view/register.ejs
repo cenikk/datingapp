@@ -1,0 +1,30 @@
+<% include partials/header.ejs %>
+
+<main>
+    <form action="">
+        <legend>Vertel een beetje over jezelf</legend>
+        <label for="firstName">Voornaam</label>
+        <input type="text" name="voornaam" id="firstName">
+        <div class="select_gender">
+            <label for="gender">Geslacht</label>
+            <div>
+                <input type="radio" id="man" name="gender">
+                <label for="man">Man</label>
+            </div>
+            <div>
+                <input type="radio" id="vrouw" name="gender">
+                <label for="vrouw">Vrouw</label>
+            </div>
+        </div>
+        <div class="select_dateofbirth">
+            <label for="day">Geboortedatum</label>
+            <div>
+                <input type="text" name="dag" id="day" placeholder="Dag">
+                <input type="text" name="maand" id="month" placeholder="Maand">
+                <input type="text" name="jaar" id="year" placeholder="Jaar">
+            </div>
+        </div>
+        <p>Deze informatie wordt weergeven aan andere gebruikers</p>
+        <button type="submit">Volgende</button>
+    </form>
+</main>
