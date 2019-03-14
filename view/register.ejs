@@ -1,7 +1,7 @@
 <% include partials/header.ejs %>
 
 <main>
-    <form action="">
+    <form action="/" method="POST">
         <legend>Vertel een beetje over jezelf</legend>
         <label for="firstName">Voornaam</label>
         <input type="text" name="voornaam" id="firstName">
@@ -28,3 +28,5 @@
         <button type="submit">Volgende</button>
     </form>
 </main>
+
+<% include tail.ejs %>
