@@ -1,6 +1,5 @@
 // Require (load) NPM Modules 
 const express = require('express');
-const app = express();
 const slugify = require('slugify');
 const bodyParser = require('body-parser');
 
@@ -10,7 +9,7 @@ const port = 8000;
 let testData = [];
 
 // Placed some basic methods to my app (express), with help from: https://www.npmjs.com/package/express
-app
+express()
     // Configure settings for express
     .set('view engine', 'ejs')
     .set('views', 'view')
