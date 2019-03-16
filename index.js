@@ -10,6 +10,10 @@ let testData = [];
 
 // Placed some basic methods to my app (express), with help from: https://www.npmjs.com/package/express
 express()
+    // Use the following code to serve images, CSS files and JS in a directory called "static"
+    .use('/static', express.static('static'))
+    .use(bodyParser.urlencoded({ extended: false }))
+    
     // Configure settings for express
     .set('view engine', 'ejs')
     .set('views', 'view')
@@ -21,10 +25,8 @@ express()
     .get('/:id', users)
     .delete('/:id', remove)
 
-    // Use the following code to serve images, CSS files and JS in a directory called "static"
-    .use('/static', express.static('static'))
-    .use(bodyParser.urlencoded({ extended: false }))
     .post('/', add)
+
     // Use function pageNotFound when a route can't b`e found
     .use(pageNotFound)
 
@@ -65,7 +67,6 @@ function add(req, res) {
 
 function users(req, res) {
     res.render('userlist.ejs', {testData});
-    console.log(testData);
 }
 
 function remove(req, res) {
