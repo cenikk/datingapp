@@ -1,7 +1,7 @@
 :root {
-    --textColor: #F6F6F6;
-    --inputFieldColor: #F0DEE0;
-    --buttonColor: #F0C7DC;
+    --text-color: #F6F6F6;
+    --inputfield-color: #F0DEE0;
+    --button-color: #F0C7DC;
 }
 
 body {
@@ -13,12 +13,11 @@ body {
     background: -webkit-linear-gradient(-45deg, #de6c5f 0%,#ca5e7e 100%); 
     background: linear-gradient(135deg, #de6c5f 10%,#ca5e7e 100%);
     overflow: hidden;
-    color: var(--textColor);
+    color: var(--text-color);
 }
 
-header {
-    margin-top: 2rem;
-}
+/* Header styles */
+header { margin-top: 2rem; }
 
 nav ul {
     display: grid;
@@ -38,13 +37,9 @@ nav ul li {
 nav ul li:nth-child(1) { justify-self: flex-start; }
 nav ul li:nth-child(3) { justify-self: flex-end; }
 
-i {
-    color: var(--textColor);
-}
+i { color: var(--text-color); }
 
-img[alt="logo"] {
-    width: 4rem;
-}
+img[alt="logo"] { width: 4rem; }
 
 main {
     font-weight: bold;
@@ -54,7 +49,7 @@ main {
 main form {
     display: grid;
     justify-items: center;
-    color: var(--textColor);
+    color: var(--text-color);
     position: relative;
 }
 
@@ -72,7 +67,7 @@ main form label {
 }
 
 main form input {
-    background-color: var(--inputFieldColor);
+    background-color: var(--inputfield-color);
     width: 24rem;
     height: 1.7rem;
     padding: .7rem;
@@ -94,9 +89,7 @@ main form input {
     min-width: 25.3rem;
 }
 
-.select_gender div {
-    background-color: var(--inputFieldColor);
-}
+.select_gender div { background-color: var(--inputfield-color); }
 
 .select_gender div input {
     position: relative;
@@ -151,7 +144,7 @@ button[type="submit"] {
     font-size: 1.5rem;
     letter-spacing: 0.3px;
     color: #3C3C3B;
-    background-color: var(--buttonColor);
+    background-color: var(--button-color);
     border: none;
     border-radius: 5px;
 }

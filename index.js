@@ -30,8 +30,8 @@ express()
     // Use function pageNotFound when a route can't b`e found
     .use(pageNotFound)
 
-    // Listen for requests on port (8000)
-    .listen(port)
+    //Listen for requests on port (8000)
+    .listen(port, listening);
 
 // Handle the index request by rendering index.ejs. req = request, res = response
 function index(req, res) {
@@ -62,7 +62,6 @@ function add(req, res) {
     });
 
     res.redirect('/' + id);
-    return data;
 }
 
 function users(req, res) {
@@ -77,4 +76,8 @@ function remove(req, res) {
     })
 
     res.json({status: 'ok'});
+}
+
+function listening() {
+    console.log('Listening on port: ' + port);
 }
