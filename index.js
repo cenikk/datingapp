@@ -22,10 +22,11 @@ express()
     .get('/', index)
     .get('/about', about)
     .get('/register', register)
-    .get('/:id', users)
+    // .get('/:id', profile)
+    .get('/:id/upload', upload)
     .delete('/:id', remove)
 
-    .post('/', add)
+    .post('/register', add)
 
     // Use function pageNotFound when a route can't b`e found
     .use(pageNotFound)
@@ -61,12 +62,21 @@ function add(req, res) {
         birthyear: req.body.jaar
     });
 
-    res.redirect('/' + id);
+    res.redirect('/' + id + '/upload');
     return data;
 }
 
+function upload(req, res) {
+    let id = req.params.id;
+    let filter = testData.filter(function(value) {
+        return value.id == id;
+    });
+    res.render('upload.ejs', {testData: filter});
+}
+
 function users(req, res) {
-    res.render('userlist.ejs', {testData});
+    let id = slugify(req.body.voornaam).toLowerCase();
+    res.er('userlist.ejs', {testData});
 }
 
 function remove(req, res) {
