@@ -2,6 +2,8 @@
 const express = require('express');
 const slugify = require('slugify');
 const bodyParser = require('body-parser');
+const multer = require('multer');
+const uploadFolder = multer({dest: 'static/upload'});
 
 const port = 8000; 
 
@@ -22,6 +24,7 @@ express()
     .get('/', index)
     .get('/about', about)
     .get('/register', register)
+    .get('/userlist', users)
     // .get('/:id', profile)
     .get('/:id/upload', upload)
     .delete('/:id', remove)
@@ -40,7 +43,8 @@ function index(req, res) {
 }
 
 function about(req, res) {
-    res.send('This is the about page');
+    const team = require("./models/team.js");
+    res.render('about.ejs', {team});
 }
 
 function register(req, res) {
@@ -75,8 +79,7 @@ function upload(req, res) {
 }
 
 function users(req, res) {
-    let id = slugify(req.body.voornaam).toLowerCase();
-    res.er('userlist.ejs', {testData});
+    res.render('userlist.ejs', {testData});
 }
 
 function remove(req, res) {
