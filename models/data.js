@@ -1,7 +1,6 @@
 // data
 let data = [
     {
-        id: "Kaan",
         firstName: "Kaan",
         gender: "male",
         birthday: 04,

@@ -1,9 +1,10 @@
 <% include partials/header.ejs %>
 
 <main>
-    <form action="/upload" method="POST" enctype="multipart/form-data">
+    <form action="/register" method="POST">
         <legend>Hey <%= data[0].firstName %>, Nu nog alleen een foto van jezelf</legend>
         <input type="file" name="profilepicture" accept="image">
+        <img src="/upload<%= data[0].profilepicture %>" alt="<%= data[0].firstName %>">
         <p>Deze informatie wordt weergeven aan andere gebruikers</p>
         <button type="submit">Volgende</button>
     </form>

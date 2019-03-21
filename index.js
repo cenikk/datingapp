@@ -25,9 +25,11 @@ express()
     .get('/userlist', users)
     // .get('/:id', profile)
     .get('/:id/upload', upload)
+
     .delete('/:id', remove)
 
     .post('/register', add)
+    .post('/register', uploadFolder.single('profilepicture'), add)
 
     // Use function pageNotFound when a route can't b`e found
     .use(pageNotFound)
@@ -61,9 +63,10 @@ function add(req, res) {
         gender: req.body.gender,
         birthday: req.body.dag,
         birthmonth: req.body.maand,
-        birthyear: req.body.jaar
+        birthyear: req.body.jaar,
+        profilepicture: req.file ? req.file.filename : null
     });
-
+    console.log(data);
     res.redirect('/' + id + '/upload');
     return data;
 }
