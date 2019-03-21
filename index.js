@@ -31,7 +31,7 @@ express()
     .post('/register', add)
     .post('/register', uploadFolder.single('profilepicture'), add)
 
-    // Use function pageNotFound when a route can't b`e found
+    // Use function pageNotFound when a route can't be found
     .use(pageNotFound)
 
     // Listen for requests on port (8000)
