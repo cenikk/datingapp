@@ -3,11 +3,11 @@
 <main>
     <h1>User Registered</h1>
     <h2>User Profile</h2>
-    <% for (let i = 0; i < testData.length; i++) { %>
-        <h3>Voornaam: <%= testData[i].firstName %></h3>
-        <h3>Gender: <%= testData[i].gender %> </h3>
-        <h3>Geboortedatum: <%= testData[i].birthday %> - <%=  testData[i].birthmonth, %> - <%= testData[i].birthyear %> </h3>
-        <button id="js-remove" data-id='<%= testData[i].id %>' class="danger">Remove</button>
+    <% for (let i = 0; i < data.length; i++) { %>
+        <h3>Voornaam: <%= data[i].firstName %></h3>
+        <h3>Gender: <%= data[i].gender %> </h3>
+        <h3>Geboortedatum: <%= data[i].birthday %> - <%=  data[i].birthmonth, %> - <%= data[i].birthyear %> </h3>
+        <button id="js-remove" data-id='<%= data[i].id %>' class="danger">Remove</button>
     <% } %>
 </main>
 

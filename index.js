@@ -4,11 +4,9 @@ const slugify = require('slugify');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 const uploadFolder = multer({dest: 'static/upload'});
+const data = require("./models/data.js");
 
 const port = 8000; 
-
-// Added some test data to see how I can include it in my .ejs files.
-let testData = [];
 
 // Placed some basic methods to my app (express), with help from: https://www.npmjs.com/package/express
 express()
@@ -39,7 +37,7 @@ express()
 
 // Handle the index request by rendering index.ejs. req = request, res = response
 function index(req, res) {
-    res.render('index.ejs', {testData: testData}); // render by combining templates with data, send the result
+    res.render('index.ejs', {data}); // render by combining templates with data, send the result
 }
 
 function about(req, res) {
@@ -57,7 +55,7 @@ function pageNotFound(req, res) {
 
 function add(req, res) {
     let id = slugify(req.body.voornaam).toLowerCase();
-    testData.push({
+    data.push({
         id: id,
         firstName: req.body.voornaam,
         gender: req.body.gender,
@@ -72,20 +70,21 @@ function add(req, res) {
 
 function upload(req, res) {
     let id = req.params.id;
-    let filter = testData.filter(function(value) {
+    let filter = data.filter(function(value) {
         return value.id == id;
     });
-    res.render('upload.ejs', {testData: filter});
+    res.render('upload.ejs', {data: filter});
+    // help from Thijs (github.com/iSirThijs)
 }
 
 function users(req, res) {
-    res.render('userlist.ejs', {testData});
+    res.render('userlist.ejs', {data});
 }
 
 function remove(req, res) {
     let id = req.params.id;
 
-    testData = testData.filter(function (value) {
+    data = data.filter(function (value) {
         return value.id !== id;
     })
 
