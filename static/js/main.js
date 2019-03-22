@@ -1,5 +1,5 @@
 let remove = document.querySelector('#js-remove');
-
+console.log(remove);
 if (remove) {
     remove.addEventListener('click', removeUser);
 }
@@ -7,6 +7,7 @@ if (remove) {
 function removeUser(e) {
     let node = e.target;
     let id = node.dataset.id; 
+    console.log(id);
 
     let res = new XMLHttpRequest();
 

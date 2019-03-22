@@ -19,15 +19,14 @@ mongo.MongoClient.connect(url, {useNewUrlParser: true}, function (err, client) {
     }
 })  
 
-//MongoClient.connect("mongodb://localhost:27017/YourDB", { useNewUrlParser: true })
-
 const port = 8000; 
 
 // Placed some basic methods to my app (express), with help from: https://www.npmjs.com/package/express
 express()
     // Use the following code to serve images, CSS files and JS in a directory called "static"
     .use('/static', express.static('static'))
-    .use(bodyParser.urlencoded({ extended: false }))
+    .use(bodyParser.urlencoded({ extended: true }))
+    .use(bodyParser.json())
 
     // Configure settings for express
     .set('view engine', 'ejs')
@@ -40,8 +39,9 @@ express()
     .get('/userlist', users)
     // .get('/:id', profile)
     .get('/:id/upload', upload)
+    .get('/:id/userdetail', userDetail)
 
-    .delete('/:id', remove)
+    .delete('/userlist', remove)
 
     .post('/register', add)
     .post('/register', uploadFolder.single('profilepicture'), add)
@@ -93,9 +93,8 @@ function add(req, res) {
 
 function upload(req, res) {
     let id = req.params.id;
-    let ObjectID = require('mongodb').ObjectID;
     db.collection('user').findOne({
-        '_id': ObjectID(id)
+        'id' : id
     }, done)
     
     function done(err, data) {
@@ -111,28 +110,44 @@ function upload(req, res) {
     // help from Thijs (github.com/iSirThijs)
 }
 
-function users(req, res) {
-    res.render('userlist.ejs', {data});
+function users(req, res, next) {
+    db.collection('user').find().toArray(done);
+    function done(err, data) {
+        if (err) {
+          next(err)
+        } else {
+          res.render('userlist.ejs', {data})
+        }
+      }
 }
 
 function remove(req, res) {
     let id = req.params.id;
 
-    data = data.filter(function (value) {
-        return value.id !== id;
-    })
+    db.collection('user').deleteOne({
+        _id: mongo.ObjectID(id)
+    }, done)
 
-    res.json({status: 'ok'});
+    function done(err) {
+        if (err) {
+            next(err)
+        } else {
+            res.json({status: 'ok'})
+        }
+    }
 }
 
-function findUser(req, res, next) {
-    db.collection('user').find().toArray(done)
+function userDetail(req, res) {
+    let id = req.params.id;
+    db.collection('user').findOne({
+        'id': id
+    }, done)
     
     function done(err, data) {
-      if (err) {
-        next(err)
-      } else {
-        res.render('userlist.ejs', {data})
-      }
+        if (err) {
+            console.log('An error has occured', err)
+        } else {
+            res.render('userdetail.ejs', {data})
+        }
     }
 }
