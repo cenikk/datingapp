@@ -26,7 +26,7 @@ express()
     // Use the following code to serve images, CSS files and JS in a directory called "static"
     .use('/static', express.static('static'))
     .use(bodyParser.urlencoded({ extended: true }))
-    .use(bodyParser.json())
+    .use(bodyParser.json()) //  parse application/json (fixed my radiobuttons)
 
     // Configure settings for express
     .set('view engine', 'ejs')

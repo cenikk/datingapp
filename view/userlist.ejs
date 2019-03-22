@@ -1,12 +1,12 @@
 <% include partials/header.ejs %>
 
-<main>
+<section class="userlist">
     <h1>A list of all the users</h1>
     <% for (let i = 0; i < data.length; i++) { %>
         <h3>Voornaam: <%= data[i].firstName %></h3>
         <img src="/upload<%= data[i].profilepicture %>" alt="<%= data[i].firstName %>">
         <a href="/<%= data[i] %>/userdetail"> Profile</a>
     <% } %>
-</main>
+</section>
 
 <% include partials/tail.ejs %>

@@ -1,19 +1,18 @@
 :root {
     --textColor: #F6F6F6;
-    --inputFieldColor: #F0DEE0;
-    --buttonColor: #F0C7DC;
+    --inputFieldColor: #ecfbff;
+    --buttonColor: #9cd9e8;
 }
 
 body {
     font-family: proxima-nova, sans-serif;
     max-width: 70rem;
     margin: auto; padding: 0;
-    height: 100vh;
-    background: -moz-linear-gradient(-45deg, #de6c5f 0%, #ca5e7e 100%);
-    background: -webkit-linear-gradient(-45deg, #de6c5f 0%,#ca5e7e 100%); 
-    background: linear-gradient(135deg, #de6c5f 10%,#ca5e7e 100%);
-    overflow: hidden;
+    background: -moz-linear-gradient(135deg, #18414e 10%,#dca288 210%);
+    background: -webkit-linear-gradient(135deg, #18414e 10%,#dca288 210%); 
+    background: linear-gradient(135deg, #18414e 10%,#dca288 210%);
     color: var(--textColor);
+    overflow: hidden;
 }
 
 header {
@@ -46,32 +45,34 @@ img[alt="logo"] {
     width: 4rem;
 }
 
-main {
+section {
     font-weight: bold;
     margin-top: 4rem;
+    height: 100vh;
+    overflow: hidden;
 }
 
-main form {
+section form {
     display: grid;
     justify-items: center;
     color: var(--textColor);
     position: relative;
 }
 
-main form legend {
+section form legend {
     font-size: 2rem;
     text-align: center;
     font-style: italic;
     margin-bottom: 4rem;
 }
 
-main form label {
+section form label {
     font-size: 1.6rem;
     font-weight: 500;
     margin-bottom: .4rem;
 }
 
-main form input {
+section form input {
     background-color: var(--inputFieldColor);
     width: 24rem;
     height: 1.7rem;
@@ -82,9 +83,9 @@ main form input {
     margin-bottom: 2rem;
 }
 
-@media (max-width: 1300px) {
-    nav ul li:nth-child(1) { justify-self: center; transition: .4s linear;}
-    nav ul li:nth-child(3) { justify-self: center; transition: .4s linear;}
+.home {
+    background-color: rgb(236, 236, 236);
+    max-width: 100vw;
 }
 
 .select_gender, .select_gender div {
@@ -154,4 +155,9 @@ button[type="submit"] {
     background-color: var(--buttonColor);
     border: none;
     border-radius: 5px;
+}
+
+@media (max-width: 1300px) {
+    nav ul li:nth-child(1) { justify-self: center; transition: .4s linear;}
+    nav ul li:nth-child(3) { justify-self: center; transition: .4s linear;}
 }

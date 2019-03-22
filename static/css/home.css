@@ -1,0 +1,146 @@
+:root {
+    --textColor: #F6F6F6;
+    --inputFieldColor: #ecfbff;
+    --buttonColor: #9cd9e8;
+}
+
+body {
+    font-family: proxima-nova, sans-serif;
+    height: 100vh;
+    margin: 0; padding: 0;
+    overflow: hidden;
+}
+
+main {
+    background: url(../img/home_bg.jpg);
+    background-position-y: -100px;
+    background-size: cover;
+    background-position-x: 3px;
+    height: 100vh;
+    transition: .3s linear;
+    position: relative;
+}
+
+header {
+    padding-top: 2rem;
+    position: relative;
+}
+
+nav ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, auto));
+    justify-items: center;
+    align-items: flex-start;
+    margin: 0; padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    list-style-type: none;
+    font-weight: bold;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+nav ul li:nth-child(2) { 
+    justify-self: flex-end;
+    align-self: center;
+    margin-left: 80rem;
+    margin-right: 3rem;
+}
+
+nav ul li:nth-child(2) a {
+    border: 2px solid #fff;
+    padding: 0.6rem 2rem;
+    border-radius: 2px;
+}
+
+nav ul li:nth-child(2) a:hover {
+    box-shadow: 0px 0px 26px -5px rgba(250,250,250,.5);
+    cursor: pointer;
+}
+
+nav ul li:nth-child(3) {
+    justify-self: flex-start;
+    align-self: center;
+}
+
+nav ul li:nth-child(3) a:hover {
+    color: #ccc;
+}
+
+i {
+    color: var(--textColor);
+}
+
+.logo {
+    position: absolute;
+    top: 0.5rem;
+    left: 0rem;
+    padding: 1rem 3rem;
+    font-size: 2rem;
+}
+
+img[alt="logo"] {
+    width: 2.5rem;
+    margin-left: 1rem;
+}
+
+.home {
+    position: relative;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home h1 {
+    font-size: 3.5rem;
+    color: #fff;
+    text-shadow: 2px 2px 30px rgba(31, 31, 31, 0.9);
+    margin: 0;
+}
+
+.home a {
+    position: absolute;
+    top: 20rem;
+    background: rgba(14, 58, 76, 0.73);
+    padding: 1rem 5rem;
+    font-size: 1.3rem;
+    border-radius: 4px;
+}
+
+.home a:hover {
+    background: rgba(17, 65, 84, 0.73);
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,.5);
+}
+
+/* ____________ Media queries ____________ */
+@media (max-width: 920px) {
+    main {
+        background-size: 190%;
+        background-position-y: top;
+        background-position-x: center;
+    }
+    .logo {
+        position: unset;
+        padding: 0.7rem 1.3rem;
+        font-size: 1.2rem;
+    }
+    .home h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 550px) {
+    main {
+        background-size: 220%;
+        background-position: -160px 0px;
+    }
+    .home h1 {
+        font-size: 2rem;
+    }
+}

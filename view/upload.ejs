@@ -1,6 +1,6 @@
 <% include partials/header.ejs %>
 
-<main>
+<section class="upload">
     <form action="/register" method="POST">
         <legend>Hey <%= data.firstName %>, Nu nog alleen een foto van jezelf</legend>
         <input type="file" name="profilepicture" accept="image">
@@ -9,6 +9,6 @@
         <button type="submit">Volgende</button>
     </form>
     <a href="../userlist"> Bekijk alle profielen</a>
-</main>
+</section>
 
 <% include partials/tail.ejs %>

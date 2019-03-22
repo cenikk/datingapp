@@ -1,12 +1,12 @@
 <% include partials/header.ejs %>
 
-<main>
-        <h3>Voornaam: <%= data.firstName %></h3>
-        <h3>Voornaam: <%= data.name %></h3>
-        <h3>Gender: <%= data.gender %> </h3>
-        <h3>Geboortedatum: <%= data.birthday %> - <%=  data.birthmonth, %> - <%= data-id.birthyear %> </h3>
-        <img src="/upload<%= data.profilepicture %>" alt="<%= data.firstName %>">
-        <button id="js-remove" data-id='<%= data.id %>' class="danger">Remove</button>
-</main>
+<section class="userdetail">
+    <h3>Voornaam: <%= data.firstName %></h3>
+    <h3>Voornaam: <%= data.name %></h3>
+    <h3>Gender: <%= data.gender %> </h3>
+    <h3>Geboortedatum: <%= data.birthday %> - <%=  data.birthmonth, %> - <%= data-id.birthyear %> </h3>
+    <img src="/upload<%= data.profilepicture %>" alt="<%= data.firstName %>">
+    <button id="js-remove" data-id='<%= data.id %>' class="danger">Remove</button>
+</section>
 
 <% include partials/tail.ejs %>
