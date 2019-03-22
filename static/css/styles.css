@@ -8,9 +8,10 @@ body {
     font-family: proxima-nova, sans-serif;
     max-width: 70rem;
     margin: auto; padding: 0;
-    background: -moz-linear-gradient(135deg, #18414e 10%,#dca288 210%);
-    background: -webkit-linear-gradient(135deg, #18414e 10%,#dca288 210%); 
-    background: linear-gradient(135deg, #18414e 10%,#dca288 210%);
+    background: linear-gradient(0deg,rgba(0, 42, 66, 0.6),rgba(26, 26, 26, 0.6)),url('../img/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-position-y: -1px;
     color: var(--textColor);
     overflow: hidden;
 }

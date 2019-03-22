@@ -53,8 +53,10 @@ express()
     .listen(port)
 
 // Handle the index request by rendering index.ejs. req = request, res = response
+// req is an object containing information about the HTTP request that raised the event. 
+// In response to req, you use res to send back the desired HTTP response.
 function index(req, res) {
-    res.render('index.ejs', {data}); // render by combining templates with data, send the result
+    res.render('index.ejs');
 }
 
 function about(req, res) {
@@ -71,39 +73,34 @@ function pageNotFound(req, res) {
 }
 
 function add(req, res) {
-    let id = slugify(req.body.voornaam).toLowerCase();
     db.collection('user').insertOne({
-        id: id,
         firstName: req.body.voornaam,
         gender: req.body.gender,
         birthday: req.body.dag,
         birthmonth: req.body.maand,
         birthyear: req.body.jaar,
         profilepicture: req.file ? req.file.filename : null
-    }, done)
-
-    function done(err, data) {
+    }, function(err, data) {
         if (err) {
             connsole.log('An error has occured', err);
         } else {
-            res.redirect('/' + id + '/upload');
+            res.redirect('/' + data.insertedId + '/upload');
         }
-    }
+    })
 }
 
 function upload(req, res) {
     let id = req.params.id;
     db.collection('user').findOne({
-        'id' : id
-    }, done)
-    
-    function done(err, data) {
+        _id: mongo.ObjectID(id)
+    }, function(err, data) {
         if (err) {
             console.log('An error has occured', err)
         } else {
             res.render('upload.ejs', {data})
         }
-    }
+    })
+
     // let filter = data.filter(function(value) {
     //     return value.id == id;
     // });
@@ -140,7 +137,7 @@ function remove(req, res) {
 function userDetail(req, res) {
     let id = req.params.id;
     db.collection('user').findOne({
-        'id': id
+        _id: mongo.ObjectID(id)
     }, done)
     
     function done(err, data) {

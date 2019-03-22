@@ -9,6 +9,10 @@ body {
     height: 100vh;
     margin: 0; padding: 0;
     overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;     
 }
 
 main {
@@ -59,7 +63,7 @@ nav ul li:nth-child(2) a {
 }
 
 nav ul li:nth-child(2) a:hover {
-    box-shadow: 0px 0px 26px -5px rgba(250,250,250,.5);
+    box-shadow: 0 2px 20px 0 rgba(250,250,250,.7);
     cursor: pointer;
 }
 
@@ -82,6 +86,8 @@ i {
     left: 0rem;
     padding: 1rem 3rem;
     font-size: 2rem;
+    color: #fff;
+    cursor: default;
 }
 
 img[alt="logo"] {
@@ -102,11 +108,12 @@ img[alt="logo"] {
     color: #fff;
     text-shadow: 2px 2px 30px rgba(31, 31, 31, 0.9);
     margin: 0;
+    cursor: default;
 }
 
 .home a {
     position: absolute;
-    top: 20rem;
+    top: 21rem;
     background: rgba(14, 58, 76, 0.73);
     padding: 1rem 5rem;
     font-size: 1.3rem;
