@@ -4,6 +4,7 @@
     <h1>A list of all the users</h1>
     <% for (let i = 0; i < data.length; i++) { %>
         <h3>Voornaam: <%= data[i].firstName %></h3>
+        <h3>Voornaam: <%= data[i].name %></h3>
         <h3>Gender: <%= data[i].gender %> </h3>
         <h3>Geboortedatum: <%= data[i].birthday %> - <%=  data[i].birthmonth, %> - <%= data[i].birthyear %> </h3>
         <img src="/upload<%= data[i].profilepicture %>" alt="<%= data[i].firstName %>">

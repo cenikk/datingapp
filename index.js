@@ -5,6 +5,21 @@ const bodyParser = require('body-parser');
 const multer = require('multer');
 const uploadFolder = multer({dest: 'static/upload'});
 const data = require("./models/data.js");
+const mongo = require('mongodb');
+
+require('dotenv').config();
+
+const url = 'mongodb://' + process.env.DB_HOST + ':' + process.env.DB_PORT;
+mongo.MongoClient.connect(url, {useNewUrlParser: true}, function (err, client) {
+    
+    if (err) {
+        console.log("Failed to connect", err);
+    } else {
+        db = client.db(process.env.DB_NAME);
+    }
+})  
+
+//MongoClient.connect("mongodb://localhost:27017/YourDB", { useNewUrlParser: true })
 
 const port = 8000; 
 
@@ -13,7 +28,7 @@ express()
     // Use the following code to serve images, CSS files and JS in a directory called "static"
     .use('/static', express.static('static'))
     .use(bodyParser.urlencoded({ extended: false }))
-    
+
     // Configure settings for express
     .set('view engine', 'ejs')
     .set('views', 'view')
@@ -57,7 +72,7 @@ function pageNotFound(req, res) {
 
 function add(req, res) {
     let id = slugify(req.body.voornaam).toLowerCase();
-    data.push({
+    db.collection('user').insertOne({
         id: id,
         firstName: req.body.voornaam,
         gender: req.body.gender,
@@ -65,18 +80,34 @@ function add(req, res) {
         birthmonth: req.body.maand,
         birthyear: req.body.jaar,
         profilepicture: req.file ? req.file.filename : null
-    });
-    console.log(data);
-    res.redirect('/' + id + '/upload');
-    return data;
+    }, done)
+
+    function done(err, data) {
+        if (err) {
+            connsole.log('An error has occured', err);
+        } else {
+            res.redirect('/' + id + '/upload');
+        }
+    }
 }
 
 function upload(req, res) {
     let id = req.params.id;
-    let filter = data.filter(function(value) {
-        return value.id == id;
-    });
-    res.render('upload.ejs', {data: filter});
+    let ObjectID = require('mongodb').ObjectID;
+    db.collection('user').findOne({
+        '_id': ObjectID(id)
+    }, done)
+    
+    function done(err, data) {
+        if (err) {
+            console.log('An error has occured', err)
+        } else {
+            res.render('upload.ejs', {data})
+        }
+    }
+    // let filter = data.filter(function(value) {
+    //     return value.id == id;
+    // });
     // help from Thijs (github.com/iSirThijs)
 }
 
@@ -92,4 +123,16 @@ function remove(req, res) {
     })
 
     res.json({status: 'ok'});
+}
+
+function findUser(req, res, next) {
+    db.collection('user').find().toArray(done)
+    
+    function done(err, data) {
+      if (err) {
+        next(err)
+      } else {
+        res.render('userlist.ejs', {data})
+      }
+    }
 }
