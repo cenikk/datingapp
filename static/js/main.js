@@ -1,5 +1,4 @@
 let remove = document.querySelector('#js-remove');
-console.log(remove);
 if (remove) {
     remove.addEventListener('click', removeUser);
 }

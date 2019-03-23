@@ -35,14 +35,12 @@ express()
     .get('/about', about)
     .get('/register', register)
     .get('/userlist', userList)
-    // .get('/:id', profile)
-    .get('/:id/upload', upload)
+    .get('/:id/profile', profile)
     .get('/:id/userdetail', userDetail)
 
     .delete('/userlist', remove)
 
-    .post('/register', add)
-    .post('/upload', uploadFolder.single('profilepicture'), add)
+    .post('/register', uploadFolder.single('profilepicture'), add)
 
     // Use function pageNotFound when a route can't be found
     .use(pageNotFound)
@@ -82,23 +80,9 @@ function add(req, res) {
         if (err) {
             connsole.log('An error has occured', err);
         } else {
-            res.redirect('/' + data.insertedId + '/upload');
+            res.redirect('/' + data.insertedId + '/profile');
         }
     })
-}
-
-function upload(req, res) {
-    let id = req.params.id;
-    db.collection('user').findOne({
-        _id: mongo.ObjectID(id)
-    }, function(err, data) {
-        if (err) {
-            console.log('An error has occured', err)
-        } else {
-            res.render('upload.ejs', {data})
-        }
-    })
-    // help from Thijs (github.com/iSirThijs)
 }
 
 function userList(req, res, next) {
@@ -110,6 +94,21 @@ function userList(req, res, next) {
           res.render('userlist.ejs', {data})
         }
       }
+}
+
+function profile(req, res) {
+    let id = req.params.id;
+    console.log(id);
+    db.collection('user').findOne({
+        _id: mongo.ObjectID(id)
+    }, function(err, data) {
+        if (err) {
+            console.log('An error has occured', err)
+        } else {
+            console.log(data);
+            res.render('profile.ejs', {data})
+        }
+    })  
 }
 
 function remove(req, res) {

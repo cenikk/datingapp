@@ -1,0 +1,8 @@
+<% include partials/header.ejs %>
+
+<section class="profile">
+    <h1><%= data.firstName %></h1>
+    <img src="../static/upload/<%= data.profilepicture %>" alt="<%= data.firstName %>">
+</section>
+
+<% include partials/tail.ejs %>

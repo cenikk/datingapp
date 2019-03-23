@@ -1,8 +1,7 @@
 <% include partials/header.ejs %>
 
 <section class="register">
-    <form action="/register" method="POST">
-        <legend>Vertel een beetje over jezelf</legend>
+    <form action="/register" enctype="multipart/form-data" method="POST" >
         <label for="firstName">Voornaam</label>
         <input type="text" name="voornaam" id="firstName">
         <div class="select_gender">
@@ -24,6 +23,8 @@
                 <input type="text" name="jaar" id="year" placeholder="Jaar">
             </div>
         </div>
+        <label for="profilePic">Profielfoto</label>
+        <input type="file" name="profilepicture" accept="image/*" id="profilePic">
         <p>Deze informatie wordt weergeven aan andere gebruikers</p>
         <button type="submit">Volgende</button>
     </form>
