@@ -4,7 +4,7 @@
     <h1>Potentiële matches</h1>
     <% for (let i = 0; i < data.length; i++) { %>
         <h3>Voornaam: <%= data[i].firstName %></h3>
-        <img src="/upload/<%= data[i].profilepicture %>" alt="<%= data[i].firstName %>">
+        <img src="../static/upload/<%= data[i].profilepicture %>" class="profile_img" alt="<%= data[i].firstName %>">
         <a href="/<%= data[i] %>/userdetail"> Profile</a>
     <% } %>
 </section>

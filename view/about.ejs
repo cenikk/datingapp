@@ -10,32 +10,32 @@
     </nav>
 </header>
 <main>
-    <section>
+    <article>
         <h1>Matchen op wat uitmaakt</h1>
         <p>Op LoveSome, zijn we toegewijd om mensen te helpen liefde en geluk te vinden door middel van zinvolle verbindingen. Ons unieke algoritme komt overeen met wat echt belangrijk is.</p>
-    </section>
-    <section>
+    </article>
+    <div>
             <figure>
-                <img src="<%= team[0].picture %>" alt="aaron-smith">
-                <h2><%= team[0].name %></h2>
+                <img src="<%= team[0].pic %>" class="profile_img" alt="aaron-smith">
+                <h2><%= team[0].firstName %></h2>
                 <p><%= team[0].position %></p>
             </figure>
             <figure>
-                <img src="<%= team[1].picture %>" alt="blake-washington">
-                <h2><%= team[1].name %></h2>
+                <img src="<%= team[1].pic %>" class="profile_img" alt="blake-washington">
+                <h2><%= team[1].firstName %></h2>
                 <p><%= team[1].position %></p>
             </figure>
             <figure>
-                <img src="<%= team[2].picture %>" alt="chris-hield">
-                <h2><%= team[2].name %></h2>
+                <img src="<%= team[2].pic %>" class="profile_img" alt="chris-hield">
+                <h2><%= team[2].firstName %></h2>
                 <p><%= team[2].position %></p>
             </figure>
             <figure>
-                <img src="<%= team[3].picture %>" alt="diana-davis">
-                <h2><%= team[3].name %></h2>
+                <img src="<%= team[3].pic %>" class="profile_img" alt="diana-davis">
+                <h2><%= team[3].firstName %></h2>
                 <p><%= team[3].position %></p>
             </figure>
-    </section>
+        </div>
 </main>
 
 <% include partials/tail.ejs %>

@@ -56,8 +56,13 @@ function index(req, res) {
 }
 
 function about(req, res) {
-    const team = require("./models/team.js");
-    res.render('about.ejs', {team});
+    db.collection('team').find().toArray(function(err, team) {
+        if (err) {
+            console.log('An error has occured', err)
+        } else {
+            res.render('about.ejs', {team})
+        }
+    })
 }
 
 function register(req, res) {
@@ -85,15 +90,14 @@ function add(req, res) {
     })
 }
 
-function userList(req, res, next) {
-    db.collection('user').find().toArray(done);
-    function done(err, data) {
+function userList(req, res) {
+    db.collection('user').find().toArray(function(err, data) {
         if (err) {
-          next(err)
-        } else {
-          res.render('userlist.ejs', {data})
-        }
-      }
+            console.log('An error has occured', err)
+          } else {
+            res.render('userlist.ejs', {data})
+          }
+    })
 }
 
 function profile(req, res) {

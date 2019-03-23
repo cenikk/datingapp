@@ -158,6 +158,10 @@ button[type="submit"] {
     border-radius: 5px;
 }
 
+.profile_img {
+    width: 20rem;
+}
+
 @media (max-width: 1300px) {
     nav ul li:nth-child(1) { justify-self: center; transition: .4s linear;}
     nav ul li:nth-child(3) { justify-self: center; transition: .4s linear;}
