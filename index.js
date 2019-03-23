@@ -35,7 +35,7 @@ express()
     .get('/about', about)
     .get('/register', register)
     .get('/userlist', userList)
-    .get('/:id/profile', profile)
+    .get('/:id', profile)
     .get('/:id/userdetail', userDetail)
 
     .delete('/userlist', remove)
@@ -80,7 +80,7 @@ function add(req, res) {
         if (err) {
             connsole.log('An error has occured', err);
         } else {
-            res.redirect('/' + data.insertedId + '/profile');
+            res.redirect('/' + data.insertedId);
         }
     })
 }

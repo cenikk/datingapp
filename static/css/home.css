@@ -97,8 +97,9 @@ img[alt="logo"] {
 
 .home {
     position: relative;
-    height: 60vh;
-    display: flex;
+    height: 70vh;
+    display: grid;
+    grid-gap: 1rem;
     align-items: center;
     justify-content: center;
 }
@@ -109,15 +110,17 @@ img[alt="logo"] {
     text-shadow: 2px 2px 30px rgba(31, 31, 31, 0.9);
     margin: 0;
     cursor: default;
+    align-self: flex-end;
 }
 
 .home a {
-    position: absolute;
-    top: 21rem;
     background: rgba(14, 58, 76, 0.73);
     padding: 1rem 5rem;
     font-size: 1.3rem;
     border-radius: 4px;
+    align-self: flex-start;
+    justify-self: center;
+    width: auto;
 }
 
 .home a:hover {
@@ -135,19 +138,36 @@ img[alt="logo"] {
     .logo {
         position: unset;
         padding: 0.7rem 1.3rem;
-        font-size: 1.2rem;
     }
     .home h1 {
         font-size: 2.5rem;
     }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 600px) {
     main {
         background-size: 220%;
         background-position: -160px 0px;
     }
     .home h1 {
         font-size: 2rem;
+    }
+    nav ul li:nth-child(1) { 
+        color: rgba(0,0,0,0);
+    }
+    .logo {
+        font-size: 0;
+    }
+    nav ul li:nth-child(2) { 
+        justify-self: center;
+        align-self: center;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    
+    nav ul li:nth-child(2) a {
+        border: none;
+        padding: 0.6rem 2rem;
+        border-radius: 2px;
     }
 }
