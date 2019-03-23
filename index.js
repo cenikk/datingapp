@@ -4,14 +4,12 @@ const slugify = require('slugify');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 const uploadFolder = multer({dest: 'static/upload'});
-const data = require("./models/data.js");
 const mongo = require('mongodb');
 
 require('dotenv').config();
 
 const url = 'mongodb://' + process.env.DB_HOST + ':' + process.env.DB_PORT;
 mongo.MongoClient.connect(url, {useNewUrlParser: true}, function (err, client) {
-    
     if (err) {
         console.log("Failed to connect", err);
     } else {
@@ -36,7 +34,7 @@ express()
     .get('/', index)
     .get('/about', about)
     .get('/register', register)
-    .get('/userlist', users)
+    .get('/userlist', userList)
     // .get('/:id', profile)
     .get('/:id/upload', upload)
     .get('/:id/userdetail', userDetail)
@@ -44,7 +42,7 @@ express()
     .delete('/userlist', remove)
 
     .post('/register', add)
-    .post('/register', uploadFolder.single('profilepicture'), add)
+    .post('/upload', uploadFolder.single('profilepicture'), add)
 
     // Use function pageNotFound when a route can't be found
     .use(pageNotFound)
@@ -100,14 +98,10 @@ function upload(req, res) {
             res.render('upload.ejs', {data})
         }
     })
-
-    // let filter = data.filter(function(value) {
-    //     return value.id == id;
-    // });
     // help from Thijs (github.com/iSirThijs)
 }
 
-function users(req, res, next) {
+function userList(req, res, next) {
     db.collection('user').find().toArray(done);
     function done(err, data) {
         if (err) {
@@ -120,31 +114,26 @@ function users(req, res, next) {
 
 function remove(req, res) {
     let id = req.params.id;
-
     db.collection('user').deleteOne({
         _id: mongo.ObjectID(id)
-    }, done)
-
-    function done(err) {
+    }, function (err){
         if (err) {
-            next(err)
+            console.log("An error has occured", err);
         } else {
             res.json({status: 'ok'})
         }
-    }
+    })
 }
 
 function userDetail(req, res) {
     let id = req.params.id;
     db.collection('user').findOne({
         _id: mongo.ObjectID(id)
-    }, done)
-    
-    function done(err, data) {
+    }, function(err, data) {
         if (err) {
             console.log('An error has occured', err)
         } else {
             res.render('userdetail.ejs', {data})
         }
-    }
+    })  
 }

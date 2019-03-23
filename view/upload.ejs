@@ -1,7 +1,7 @@
 <% include partials/header.ejs %>
 
 <section class="upload">
-    <form action="/uploaded" method="POST">
+    <form action="/upload" method="POST">
         <legend>Hey <%= data.firstName %>, Nu nog alleen een foto van jezelf</legend>
         <input type="file" name="profilepicture" accept="image">
         <img src="/upload<%= data.profilepicture %>" alt="<%= data.firstName %>">
