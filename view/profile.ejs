@@ -14,21 +14,32 @@
         <nav>
             <ul>
                 <li><a href="/"><img src="../../static/img/logo.png" alt="logo"></a></li>
-                <li><a href="#"> Blader door Matches</a></li>
+                <li><a href="/userlist"> Blader door Matches</a></li>
                 <li><a href="#"> Likes</a></li>
                 <li><a href="#"> Gesprekken</a></li>
-                <li>Registreren</li>
+                <li><a href="<%= data.id %>"><img src="../static/upload/<%= data.profilepicture %>" class="nav_img" alt="<%= data.firstName %>"></a></li>
             </ul>
         </nav>
     </header>
     <main class="profile">
-        <article>
-                <section>
-                    <div>
-                        <img src="../static/upload/<%= data.profilepicture %>" class="profile_img" alt="<%= data.firstName %>">
-                        <h1><%= data.firstName %></h1>
-                    </div>
-                </section>
+        <article class="header">
+            <section>
+                <div>
+                    <img src="../static/upload/<%= data.profilepicture %>" class="profile_img" alt="<%= data.firstName %>">
+                    <h1><%= data.firstName %></h1>
+                    <data-caption>
+                        <p><%= data.birthday %></p>
+                        <span>.</span>
+                        <p><%= data.gender %></p>
+                    </data-caption>
+                </div>
+            </section>
+        </article>
+        <article class="content">
+            <section>
+                <h4>Over mij</h4>
+                <h1>Korte beschrijving</h1>
+            </section>
         </article>
     </main>
 
