@@ -1,8 +1,35 @@
-<% include partials/header.ejs %>
-
-<section class="profile">
-    <h1><%= data.firstName %></h1>
-    <img src="../static/upload/<%= data.profilepicture %>" class="profile_img" alt="<%= data.firstName %>">
-</section>
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="shortcut icon" type="image/png" href="../../static/img/logo.png"/>
+    <link rel="stylesheet" type="text/css" href="../../static/css/logged_in.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.typekit.net/etb5dmm.css">
+    <title>LoveSome</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/"><img src="../../static/img/logo.png" alt="logo"></a></li>
+                <li><a href="#"> Blader door Matches</a></li>
+                <li><a href="#"> Likes</a></li>
+                <li><a href="#"> Gesprekken</a></li>
+                <li>Registreren</li>
+            </ul>
+        </nav>
+    </header>
+    <main class="profile">
+        <article>
+                <section>
+                    <div>
+                        <img src="../static/upload/<%= data.profilepicture %>" class="profile_img" alt="<%= data.firstName %>">
+                        <h1><%= data.firstName %></h1>
+                    </div>
+                </section>
+        </article>
+    </main>
 
 <% include partials/tail.ejs %>

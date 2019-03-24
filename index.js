@@ -48,7 +48,6 @@ express()
     // Listen for requests on port (8000)
     .listen(port)
 
-// Handle the index request by rendering index.ejs. req = request, res = response
 // req is an object containing information about the HTTP request that raised the event. 
 // In response to req, you use res to send back the desired HTTP response.
 function index(req, res) {
@@ -102,14 +101,12 @@ function userList(req, res) {
 
 function profile(req, res) {
     let id = req.params.id;
-    console.log(id);
     db.collection('user').findOne({
         _id: mongo.ObjectID(id)
     }, function(err, data) {
         if (err) {
             console.log('An error has occured', err)
         } else {
-            console.log(data);
             res.render('profile.ejs', {data})
         }
     })  
