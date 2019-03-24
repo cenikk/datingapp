@@ -1,12 +1,19 @@
 // Require (load) NPM Modules 
+require('dotenv').config();
+const port = 8000; 
 const express = require('express');
 const slugify = require('slugify');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 const uploadFolder = multer({dest: 'static/upload'});
 const mongo = require('mongodb');
-
-require('dotenv').config();
+const session = require('express-session');
+const sess = {
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: true }
+};
 
 const url = 'mongodb://' + process.env.DB_HOST + ':' + process.env.DB_PORT;
 mongo.MongoClient.connect(url, {useNewUrlParser: true}, function (err, client) {
@@ -17,14 +24,13 @@ mongo.MongoClient.connect(url, {useNewUrlParser: true}, function (err, client) {
     }
 })  
 
-const port = 8000; 
-
 // Placed some basic methods to my app (express), with help from: https://www.npmjs.com/package/express
 express()
     // Use the following code to serve images, CSS files and JS in a directory called "static"
     .use('/static', express.static('static'))
     .use(bodyParser.urlencoded({ extended: true }))
-    .use(bodyParser.json()) //  parse application/json (fixed my radiobuttons)
+    .use(bodyParser.json()) //  parse application/json (radiobuttons value)
+    .use(session(sess))
 
     // Configure settings for express
     .set('view engine', 'ejs')
@@ -38,8 +44,10 @@ express()
     .get('/:id', profile)
     .get('/:id/userdetail', userDetail)
 
+    // Delete users from db
     .delete('/userlist', remove)
 
+    // Post new data into db
     .post('/register', uploadFolder.single('profilepicture'), add)
 
     // Use function pageNotFound when a route can't be found
@@ -57,9 +65,9 @@ function index(req, res) {
 function about(req, res) {
     db.collection('team').find().toArray(function(err, team) {
         if (err) {
-            console.log('An error has occured', err)
+            console.log('An error has occured', err);
         } else {
-            res.render('about.ejs', {team})
+            res.render('about.ejs', {team});
         }
     })
 }
@@ -84,6 +92,8 @@ function add(req, res) {
         if (err) {
             connsole.log('An error has occured', err);
         } else {
+            req.session.user = {data};
+            // console.log(req.session.user);
             res.redirect('/' + data.insertedId);
         }
     })
@@ -92,9 +102,9 @@ function add(req, res) {
 function userList(req, res) {
     db.collection('user').find().toArray(function(err, data) {
         if (err) {
-            console.log('An error has occured', err)
+            console.log('An error has occured', err);
           } else {
-            res.render('userlist.ejs', {data})
+            res.render('userlist.ejs', {data});
           }
     })
 }
@@ -105,9 +115,9 @@ function profile(req, res) {
         _id: mongo.ObjectID(id)
     }, function(err, data) {
         if (err) {
-            console.log('An error has occured', err)
+            console.log('An error has occured', err);
         } else {
-            res.render('profile.ejs', {data})
+            res.render('profile.ejs', {data});
         }
     })  
 }
@@ -120,7 +130,7 @@ function remove(req, res) {
         if (err) {
             console.log("An error has occured", err);
         } else {
-            res.json({status: 'ok'})
+            res.json({status: 'ok'});
         }
     })
 }
@@ -131,9 +141,9 @@ function userDetail(req, res) {
         _id: mongo.ObjectID(id)
     }, function(err, data) {
         if (err) {
-            console.log('An error has occured', err)
+            console.log('An error has occured', err);
         } else {
-            res.render('userdetail.ejs', {data})
+            res.render('userdetail.ejs', {data});
         }
     })  
 }
