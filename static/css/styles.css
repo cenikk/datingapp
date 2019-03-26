@@ -139,7 +139,13 @@ section form input {
     padding: .6rem .8rem;
 }
 
-main form p {
+input[type='file'] {
+    padding-top: 1rem;
+    line-height: 0;
+    color: rgb(26, 26, 26);
+}
+
+section form p {
     font-size: 1rem;
     font-weight: lighter;
     font-style: italic;

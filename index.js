@@ -15,7 +15,9 @@ const sess = {
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
-    cookie: {}
+    cookie: { 
+        secure: 'auto'
+    }
 };
 
 let db = null;
@@ -65,7 +67,6 @@ express()
 // req is an object containing information about the HTTP request that raised the event. 
 // In response to req, you use res to send back the desired HTTP response.
 function index(req, res) {
-    console.log(req.session);
     res.render('index.ejs');
 }
 
@@ -89,11 +90,9 @@ function pageNotFound(req, res) {
 
 function add(req, res) {
     db.collection('user').insertOne({
-        firstName: req.body.voornaam,
+        username: req.body.username,
+        password: req.body.password,
         gender: req.body.gender,
-        birthday: req.body.dag,
-        birthmonth: req.body.maand,
-        birthyear: req.body.jaar,
         profilepicture: req.file ? req.file.filename : null
     }, function(err, data) {
         if (err) {
@@ -101,7 +100,8 @@ function add(req, res) {
         } else {
             req.session.user = {
                 id: data.insertedId,
-                username: req.body.voornaam
+                username: req.body.username,
+                password: req.body.password
             };
             console.log(req.session.user);
             res.redirect('/' + data.insertedId);
@@ -110,12 +110,14 @@ function add(req, res) {
 }
 
 function matches(req, res) {
-    console.log(req.session.user);
     db.collection('user').find().toArray(function(err, data) {
         if (err) {
             console.log('An error has occured', err);
-        } else {
+        } else if(req.session.user) {
             res.render('matches.ejs', {data});
+        } else {
+            console.log('not logged in');
+            res.render('index.ejs');
         }
     });
     }
@@ -127,12 +129,14 @@ function profile(req, res) {
     }, function(err, data) {
         if (err) {
             console.log('An error has occured', err);
-        } else {
-            req.session.user;
+        } else if(req.session.user) {
             res.render('profile.ejs', {
                 data,
                 user: req.session.user
             });
+        } else {
+            console.log('not logged in');
+            res.render('index.ejs');
         }
     });
 }

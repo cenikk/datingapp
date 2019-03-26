@@ -26,13 +26,15 @@
         <article class="header">
             <section>
                 <div>
+                    <% if (user) { %>
                     <img src="../static/upload/<%= data.profilepicture %>" class="profile_img" alt="<%= data.firstName %>">
                     <h1><%= user.username %></h1>
                     <data-caption>
-                        <p><%= data.birthday %></p>
+                        <p>21</p>
                         <span>.</span>
                         <p><%= data.gender %></p>
                     </data-caption>
+                    <% } %>
                 </div>
             </section> 
         </article>
