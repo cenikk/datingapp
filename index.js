@@ -1,8 +1,8 @@
 // Require (load) NPM Modules 
 require('dotenv').config();
-const port = 8000; 
+const port = 8000;
 const express = require('express');
-const slugify = require('slugify');
+// const slugify = require('slugify');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 const uploadFolder = multer({
@@ -14,9 +14,11 @@ const session = require('express-session');
 const sess = {
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: {}
 };
 
+let db = null;
 const url = 'mongodb://' + process.env.DB_HOST + ':' + process.env.DB_PORT;
 mongo.MongoClient.connect(url, {useNewUrlParser: true}, function (err, client) {
     if (err) {
@@ -24,7 +26,7 @@ mongo.MongoClient.connect(url, {useNewUrlParser: true}, function (err, client) {
     } else {
         db = client.db(process.env.DB_NAME);
     }
-})  
+});  
 
 // Placed some basic methods to my app (express), with help from: https://www.npmjs.com/package/express
 express()
@@ -42,26 +44,28 @@ express()
     .get('/', index)
     .get('/about', about)
     .get('/register', register)
-    .get('/:id', profile)
+    .get('/login', login)
+    .get('/:id', profile) // Homepage after login
     .get('/:id/matches', matches)
-    .get('/:id/userdetail', userDetail)
     .get('/:id/logout', logout)
 
     // Delete users from db
     .delete('/:id', remove)
 
     // Post new data into db
+    .post('/login', )
     .post('/register', uploadFolder.single('profilepicture'), add)
 
     // Use function pageNotFound when a route can't be found
     .use(pageNotFound)
 
     // Listen for requests on port (8000)
-    .listen(port)
+    .listen(port);
 
 // req is an object containing information about the HTTP request that raised the event. 
 // In response to req, you use res to send back the desired HTTP response.
 function index(req, res) {
+    console.log(req.session);
     res.render('index.ejs');
 }
 
@@ -72,7 +76,7 @@ function about(req, res) {
         } else {
             res.render('about.ejs', {team});
         }
-    })
+    });
 }
 
 function register(req, res) {
@@ -93,24 +97,28 @@ function add(req, res) {
         profilepicture: req.file ? req.file.filename : null
     }, function(err, data) {
         if (err) {
-            connsole.log('An error has occured', err);
+            console.log('An error has occured', err);
         } else {
-            req.session.user = data;
+            req.session.user = {
+                id: data.insertedId,
+                username: req.body.voornaam
+            };
             console.log(req.session.user);
             res.redirect('/' + data.insertedId);
         }
-    })
+    });
 }
 
 function matches(req, res) {
+    console.log(req.session.user);
     db.collection('user').find().toArray(function(err, data) {
         if (err) {
             console.log('An error has occured', err);
-          } else {
+        } else {
             res.render('matches.ejs', {data});
-          }
-    })
-}
+        }
+    });
+    }
 
 function profile(req, res) {
     let id = req.params.id;
@@ -122,11 +130,11 @@ function profile(req, res) {
         } else {
             req.session.user;
             res.render('profile.ejs', {
-                user: data
+                data,
+                user: req.session.user
             });
         }
-    })
-
+    });
 }
 
 function remove(req, res) {
@@ -139,20 +147,11 @@ function remove(req, res) {
         } else {
             res.json({status: 'ok'});
         }
-    })
+    });
 }
 
-function userDetail(req, res) {
-    let id = req.params.id;
-    db.collection('user').findOne({
-        _id: mongo.ObjectID(id)
-    }, function(err, data) {
-        if (err) {
-            console.log('An error has occured', err);
-        } else {
-            res.render('userdetail.ejs', {data});
-        }
-    })  
+function login() {
+
 }
 
 function logout(req, res) {
@@ -162,5 +161,5 @@ function logout(req, res) {
         } else {
             res.redirect('/');
         }
-    })
+    });
 }

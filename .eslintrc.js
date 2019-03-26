@@ -14,11 +14,13 @@ module.exports = {
         "sourceType": "module"
     },
     "rules": {
+        "camelcase": [1],
         "eqeqeq": [1, "always"],
-        "no-alert": [1, "always"],
-        "no-empty-functions": [1, "always"],
-        "no-eval": [2, "always"],
+        "no-alert": [1],
+        "no-console": [0],
+        "no-empty-functions": [0],
+        "no-eval": [2],
         "semi": [1, "always"],
-        "no-var": [1, "always"]
+        "no-var": [1]
     }
 };
