@@ -5,14 +5,16 @@ const express = require('express');
 const slugify = require('slugify');
 const bodyParser = require('body-parser');
 const multer = require('multer');
-const uploadFolder = multer({dest: 'static/upload'});
+const uploadFolder = multer({
+    dest: 'static/upload',
+    limits: {fileSize: 5000000}
+});
 const mongo = require('mongodb');
 const session = require('express-session');
 const sess = {
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: true,
-    cookie: { secure: true }
+    saveUninitialized: true
 };
 
 const url = 'mongodb://' + process.env.DB_HOST + ':' + process.env.DB_PORT;
@@ -40,12 +42,13 @@ express()
     .get('/', index)
     .get('/about', about)
     .get('/register', register)
-    .get('/userlist', userList)
     .get('/:id', profile)
+    .get('/:id/matches', matches)
     .get('/:id/userdetail', userDetail)
+    .get('/:id/logout', logout)
 
     // Delete users from db
-    .delete('/userlist', remove)
+    .delete('/:id', remove)
 
     // Post new data into db
     .post('/register', uploadFolder.single('profilepicture'), add)
@@ -92,19 +95,19 @@ function add(req, res) {
         if (err) {
             connsole.log('An error has occured', err);
         } else {
-            req.session.user = {data};
-            // console.log(req.session.user);
+            req.session.user = data;
+            console.log(req.session.user);
             res.redirect('/' + data.insertedId);
         }
     })
 }
 
-function userList(req, res) {
+function matches(req, res) {
     db.collection('user').find().toArray(function(err, data) {
         if (err) {
             console.log('An error has occured', err);
           } else {
-            res.render('userlist.ejs', {data});
+            res.render('matches.ejs', {data});
           }
     })
 }
@@ -117,9 +120,13 @@ function profile(req, res) {
         if (err) {
             console.log('An error has occured', err);
         } else {
-            res.render('profile.ejs', {data});
+            req.session.user;
+            res.render('profile.ejs', {
+                user: data
+            });
         }
-    })  
+    })
+
 }
 
 function remove(req, res) {
@@ -146,4 +153,14 @@ function userDetail(req, res) {
             res.render('userdetail.ejs', {data});
         }
     })  
+}
+
+function logout(req, res) {
+    req.session.destroy(function (err) {
+        if (err) {
+            console.log("An error has occured", err);
+        } else {
+            res.redirect('/');
+        }
+    })
 }

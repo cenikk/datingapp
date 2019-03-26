@@ -24,7 +24,7 @@ header {
 
 nav ul {
     display: grid;
-    grid-template-columns: repeat(4, auto) 1fr;
+    grid-template-columns: repeat(4, auto) 1fr 100px;
     grid-gap: 3rem;
     justify-items: flex-start;;
     align-items: center;
@@ -141,4 +141,8 @@ img[alt="logo"] {
 
 .content section h1 {
     margin: .3rem 0;
+}
+
+.match_img {
+    width: 8rem;
 }

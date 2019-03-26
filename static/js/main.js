@@ -16,9 +16,9 @@ function removeUser(e) {
 
     function onload() {
         if (res.status !== 200) {
-            throw new Error('Could not delete!');
+            throw new Error('Something went wrong');
         }
 
-        window.location = '/userlist';
+        window.location = 'matches';
     } 
 }

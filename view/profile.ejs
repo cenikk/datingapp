@@ -14,10 +14,11 @@
         <nav>
             <ul>
                 <li><a href="/"><img src="../../static/img/logo.png" alt="logo"></a></li>
-                <li><a href="/userlist"> Blader door Matches</a></li>
+                <li><a href="<%= user._id %>/matches"> Blader door Matches</a></li>
                 <li><a href="#"> Likes</a></li>
                 <li><a href="#"> Gesprekken</a></li>
-                <li><a href="<%= user.id %>"><img src="../static/upload/<%= data.profilepicture %>" class="nav_img" alt="<%= data.firstName %>"></a></li>
+                <li><a href="<%= user.id %>"><img src="../static/upload/<%= user.profilepicture %>" class="nav_img" alt="<%= user.firstName %>"></a></li>
+                <li><a href="<%= user._id %>/logout"> Uitloggen</a></li>
             </ul>
         </nav>
     </header>
@@ -25,15 +26,15 @@
         <article class="header">
             <section>
                 <div>
-                    <img src="../static/upload/<%= data.profilepicture %>" class="profile_img" alt="<%= data.firstName %>">
+                    <img src="../static/upload/<%= user.profilepicture %>" class="profile_img" alt="<%= user.firstName %>">
                     <h1><%= user.firstName %></h1>
                     <data-caption>
-                        <p><%= data.birthday %></p>
+                        <p><%= user.birthday %></p>
                         <span>.</span>
-                        <p><%= data.gender %></p>
+                        <p><%= user.gender %></p>
                     </data-caption>
                 </div>
-            </section>
+            </section> 
         </article>
         <article class="content">
             <section>

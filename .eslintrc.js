@@ -14,7 +14,6 @@ module.exports = {
         "sourceType": "module"
     },
     "rules": {
-        "camelcase": [1, "always"],
         "eqeqeq": [1, "always"],
         "no-alert": [1, "always"],
         "no-empty-functions": [1, "always"],
