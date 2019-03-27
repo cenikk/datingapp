@@ -1,6 +1,6 @@
 // Require (load) NPM Modules 
 require('dotenv').config();
-const port = 8000;
+const port = process.env.PORT || 5000;
 const express = require('express');
 const bodyParser = require('body-parser');
 const multer = require('multer');
@@ -19,8 +19,19 @@ const sess = {
     }
 };
 
-let db = null;
-const url = 'mongodb://' + process.env.DB_HOST + ':' + process.env.DB_PORT;
+let db = {
+    name: process.env.DB_NAME,
+    cluster: process.env.DB_CLUSTER,
+    host: process.env.DB_HOST,
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+};
+
+const url = `mongodb+srv://${db.username}:${db.password}@${db.cluster}-${db.host}/${db.name}`
+//mongodb+srv://<DBNAME>:<password>@<DBCLUSTER>-<DBHOST>/<DBNAME>
+// `mongodb+srv://${dbuser}:${dbpassword}@${dbcluster}-${dbhost}/${dbname}`;
+//let db = null;
+
 mongo.MongoClient.connect(url, {useNewUrlParser: true}, function (err, client) {
     if (err) {
         console.log("Failed to connect", err);
