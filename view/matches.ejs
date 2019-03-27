@@ -17,8 +17,8 @@
                 <li><a href="#"> Blader door Matches</a></li>
                 <li><a href="#"> Likes</a></li>
                 <li><a href="#"> Gesprekken</a></li>
-                <li><a href="<%= data.id %>"><img src="../static/upload/<%= data.profilepicture %>" class="nav_img" alt="<%= data.firstName %>"></a></li>
-                <li><a href="/logout"> Uitloggen</a></li>
+                <li></li>
+                <li><a href="<%= data._id %>/matches/logout"> Uitloggen</a></li>
             </ul>
         </nav>
     </header>
@@ -27,7 +27,7 @@
         <% for (let i = 0; i < data.length; i++) { %>
         <div>
             <div>
-            <h3>Voornaam: <%= data[i].firstName %></h3>
+            <h3>Gebruikersnaam: <%= data[i].username %></h3>
             <img src="../static/upload/<%= data[i].profilepicture %>" class="match_img" alt="<%= data[i].firstName %>">
             <a href="/<%= data[i]._id %>"> Profile</a>
             <button id="js-remove" data-id='<%= data[i]._id %>' class="danger">Unmatch</button>

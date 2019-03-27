@@ -47,15 +47,15 @@ express()
     .get('/about', about)
     .get('/register', register)
     .get('/login', login)
-    .get('/:id', profile) // Homepage after login
-    .get('/:id/matches', matches)
-    .get('/:id/logout', logout)
+    .get('/:id', redirectLogin, profile) // Homepage after login
+    .get('/:id/matches', redirectLogin, matches)
+    .get('/:id/logout', redirectLogin, logout)
 
     // Delete users from db
     .delete('/:id', remove)
 
     // Post new data into db
-    .post('/login', )
+    .post('/login', checkData)
     .post('/register', uploadFolder.single('profilepicture'), add)
 
     // Use function pageNotFound when a route can't be found
@@ -70,6 +70,14 @@ function index(req, res) {
     res.render('index.ejs');
 }
 
+function redirectLogin(req, res, next) {
+    if (!req.session.user) {
+        res.redirect('/login');
+    } else {
+        next();
+    }
+}
+
 function about(req, res) {
     db.collection('team').find().toArray(function(err, team) {
         if (err) {
@@ -78,6 +86,10 @@ function about(req, res) {
             res.render('about.ejs', {team});
         }
     });
+}
+
+function login(req, res) {
+    res.render('login.ejs');
 }
 
 function register(req, res) {
@@ -90,7 +102,7 @@ function pageNotFound(req, res) {
 
 function add(req, res) {
     db.collection('user').insertOne({
-        username: req.body.username,
+        username: req.body.username.toLowerCase(),
         password: req.body.password,
         gender: req.body.gender,
         profilepicture: req.file ? req.file.filename : null
@@ -113,11 +125,8 @@ function matches(req, res) {
     db.collection('user').find().toArray(function(err, data) {
         if (err) {
             console.log('An error has occured', err);
-        } else if(req.session.user) {
-            res.render('matches.ejs', {data});
         } else {
-            console.log('not logged in');
-            res.render('index.ejs');
+            res.render('matches.ejs', {data});
         }
     });
     }
@@ -154,8 +163,23 @@ function remove(req, res) {
     });
 }
 
-function login() {
-
+function checkData(req, res) {
+    db.collection('user').find().toArray(function(err, data) {
+        for (let i = 0; i < data.length; i++) {
+            console.log(data[i].username);
+            if (err) {
+                console.log('An error has occured', err);
+            } else if (req.body.username.toLowerCase() === data[i].username && req.body.password === data[i].password) {
+                let id = data[i]._id;
+                req.session.user = {
+                    id: data.insertedId,
+                    username: req.body.username,
+                    password: req.body.password
+                };
+                res.redirect('/' + id);
+            }
+        }
+    });
 }
 
 function logout(req, res) {

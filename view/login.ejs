@@ -1,0 +1,13 @@
+<% include partials/header.ejs %>
+
+<section class="login">
+    <form action="/login" method="POST" >
+        <label for="username">Gebruikersnaam</label>
+        <input type="text" name="username" id="username">
+        <label for="password">Wachtwoord</label>
+        <input type="password" name="password" id="password">
+        <button type="submit">Log in</button>
+    </form>
+</section>
+
+<% include partials/tail.ejs %>
