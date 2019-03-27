@@ -17,3 +17,6 @@ To see which packages I've used, open the package.json file and look under (dev)
 ## Wiki 
 To see my whole research as well as what my perfect coding setup is, locate to my wiki in pageheader tab. 
 > Note: Everything in my Wiki is written in Dutch.
+
+## Sources
+You can see a full list of the sources I've used in my [Wiki](https://github.com/cenikk/datingapp/wiki/5.0-Sources)
