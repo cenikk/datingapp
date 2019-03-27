@@ -182,7 +182,7 @@ function checkData(req, res) {
                     id: data.insertedId,
                     username: req.body.username,
                     password: req.body.password,
-                    profilepicture: data[i].profilepicture
+                    picture: data[i].profilepicture
                 };
                 res.redirect('/' + id);
             }
