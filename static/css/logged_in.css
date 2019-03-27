@@ -132,6 +132,7 @@ img[alt="logo"] {
     background-color: #fff;
     padding: 1.1rem 2rem;
     color: rgb(50, 50, 50);
+    border-radius: 3px;
 }
 
 .content section h4 {
@@ -142,6 +143,15 @@ img[alt="logo"] {
 
 .content section h1 {
     margin: .3rem 0;
+}
+
+.content section textarea {
+    background-color: #f3f3f3;
+    padding: .9rem;
+    margin-top: .5rem;
+    font-size: 1rem;
+    border: none;
+    border-radius: 3px;
 }
 
 .match_img {

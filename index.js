@@ -2,7 +2,6 @@
 require('dotenv').config();
 const port = 8000;
 const express = require('express');
-// const slugify = require('slugify');
 const bodyParser = require('body-parser');
 const multer = require('multer');
 const uploadFolder = multer({
@@ -113,9 +112,10 @@ function add(req, res) {
             req.session.user = {
                 id: data.insertedId,
                 username: req.body.username,
-                password: req.body.password
+                password: req.body.password,
+                picture: req.file.filename
             };
-            console.log(req.session.user);
+            // console.log(req.session.user);
             res.redirect('/' + data.insertedId);
         }
     });
@@ -126,7 +126,10 @@ function matches(req, res) {
         if (err) {
             console.log('An error has occured', err);
         } else {
-            res.render('matches.ejs', {data});
+            res.render('matches.ejs', {
+                data,
+                user: req.session.user
+            });
         }
     });
     }
@@ -138,14 +141,11 @@ function profile(req, res) {
     }, function(err, data) {
         if (err) {
             console.log('An error has occured', err);
-        } else if(req.session.user) {
+        } else {
             res.render('profile.ejs', {
                 data,
                 user: req.session.user
             });
-        } else {
-            console.log('not logged in');
-            res.render('index.ejs');
         }
     });
 }
@@ -166,7 +166,6 @@ function remove(req, res) {
 function checkData(req, res) {
     db.collection('user').find().toArray(function(err, data) {
         for (let i = 0; i < data.length; i++) {
-            console.log(data[i].username);
             if (err) {
                 console.log('An error has occured', err);
             } else if (req.body.username.toLowerCase() === data[i].username && req.body.password === data[i].password) {

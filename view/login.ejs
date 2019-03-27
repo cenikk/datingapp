@@ -1,4 +1,13 @@
-<% include partials/header.ejs %>
+<% include partials/head.ejs %>
+<header>
+    <nav>
+        <ul>
+            <li><a href="/"><i class="fas fa-chevron-left"></i></a></li>
+            <li>Inloggen</li>
+            <li><a href="/"><img src="../../static/img/logo.png" alt="logo"></a></li>
+        </ul>
+    </nav>
+</header>
 
 <section class="login">
     <form action="/login" method="POST" >

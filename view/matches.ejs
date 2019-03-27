@@ -17,7 +17,7 @@
                 <li><a href="#"> Blader door Matches</a></li>
                 <li><a href="#"> Likes</a></li>
                 <li><a href="#"> Gesprekken</a></li>
-                <li></li>
+                <li><a href="/<%= user.id %>"><img src="../static/upload/<%= user.picture %>" class="nav_img" alt="<%= user.username %>"></a></li>
                 <li><a href="<%= data._id %>/matches/logout"> Uitloggen</a></li>
             </ul>
         </nav>
@@ -29,7 +29,6 @@
             <div>
             <h3>Gebruikersnaam: <%= data[i].username %></h3>
             <img src="../static/upload/<%= data[i].profilepicture %>" class="match_img" alt="<%= data[i].firstName %>">
-            <a href="/<%= data[i]._id %>"> Profile</a>
             <button id="js-remove" data-id='<%= data[i]._id %>' class="danger">Unmatch</button>
             </div>
         </div>
