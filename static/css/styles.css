@@ -47,8 +47,8 @@ img[alt="logo"] {
 
 section {
     font-weight: bold;
-    margin-top: 4rem;
-    height: 100vh;
+    margin-top: 2rem;
+    height: 87vh;
 }
 
 section form {
@@ -74,7 +74,7 @@ section form label {
 section form input {
     background-color: var(--inputfield-color);
     width: 24rem;
-    height: 1.7rem;
+    height: 1.4rem;
     padding: .7rem;
     font-size: 1.3rem;
     border: none;
@@ -147,7 +147,7 @@ section form p {
     font-size: 1rem;
     font-weight: lighter;
     font-style: italic;
-    margin-top: 3rem;
+    margin-top: 1rem;
     margin-bottom: .5rem;
 }
 
