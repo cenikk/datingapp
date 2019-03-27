@@ -6,7 +6,6 @@ if (remove) {
 function removeUser(e) {
     let node = e.target;
     let id = node.dataset.id; 
-    console.log(id);
 
     let res = new XMLHttpRequest();
 
