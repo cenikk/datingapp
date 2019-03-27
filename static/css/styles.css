@@ -13,7 +13,6 @@ body {
     background-position: center;
     background-position-y: -1px;
     color: var(--text-color);
-    overflow: hidden;
 }
 
 header {
@@ -50,7 +49,6 @@ section {
     font-weight: bold;
     margin-top: 4rem;
     height: 100vh;
-    overflow: hidden;
 }
 
 section form {
