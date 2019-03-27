@@ -20,17 +20,14 @@ const sess = {
 };
 
 let db = {
-    name: process.env.DB_NAME,
+    password: process.env.DB_PASSWORD,
+    username: process.env.DB_USERNAME,
     cluster: process.env.DB_CLUSTER,
     host: process.env.DB_HOST,
-    username: process.env.DB_USERNAME,
-    password: process.env.DB_PASSWORD,
+    name: process.env.DB_NAME,
 };
 
-const url = `mongodb+srv://${db.username}:${db.password}@${db.cluster}-${db.host}/${db.name}`
-//mongodb+srv://<DBNAME>:<password>@<DBCLUSTER>-<DBHOST>/<DBNAME>
-// `mongodb+srv://${dbuser}:${dbpassword}@${dbcluster}-${dbhost}/${dbname}`;
-//let db = null;
+const url = `mongodb+srv://${db.username}:${db.password}@${db.cluster}-${db.host}/${db.name}`;
 
 mongo.MongoClient.connect(url, {useNewUrlParser: true}, function (err, client) {
     if (err) {
@@ -184,7 +181,8 @@ function checkData(req, res) {
                 req.session.user = {
                     id: data.insertedId,
                     username: req.body.username,
-                    password: req.body.password
+                    password: req.body.password,
+                    profilepicture: data[i].profilepicture
                 };
                 res.redirect('/' + id);
             }

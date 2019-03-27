@@ -17,12 +17,12 @@
                 <li><a href="#"> Blader door Matches</a></li>
                 <li><a href="#"> Likes</a></li>
                 <li><a href="#"> Gesprekken</a></li>
-                <li><a href="/<%= user.id %>"><img src="../static/upload/<%= user.picture %>" class="nav_img" alt="<%= user.username %>"></a></li>
+                <li><a href="/<%= user.id %>"><img src="../static/upload/<%= user.profilepicture %>" class="nav_img" alt="<%= user.username %>"></a></li>
                 <li><a href="<%= data._id %>/matches/logout"> Uitloggen</a></li>
             </ul>
         </nav>
     </header>
-    <section class="userlist">
+    <section class="matches">
         <h1>Potentiële matches</h1>
         <% for (let i = 0; i < data.length; i++) { %>
         <div>

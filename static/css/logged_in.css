@@ -157,3 +157,7 @@ img[alt="logo"] {
 .match_img {
     width: 8rem;
 }
+
+.matches {
+    padding: 2rem;
+}
