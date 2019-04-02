@@ -21,7 +21,7 @@ function about(req, res) {
         if (err) {
             console.log('An error has occured', err);
         } else {
-            res.render('about.ejs', {team});
+            res.render('about.pug', {team});
         }
     });
 }

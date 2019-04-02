@@ -63,7 +63,7 @@ express()
     .use(session(sess))
     
     // Configure settings for express
-    .set('view engine', 'ejs')
+    .set('view engine', 'pug')
     .set('views', 'view')
     
     // Make different routes (Method(Path, Handler))
