@@ -26,4 +26,4 @@ Our database stores the users basic information and his/her favorite movies or s
 To get all the film information were using an Api which is: http://www.omdbapi.com/
 
 Our database design(Api not included)
-![Database](https://github.com/cenikk/datingapp/master/assets/database.jpg)
+![Database](https://github.com/cenikk/datingapp/blob/develop/assets/database.png)
