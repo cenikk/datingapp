@@ -20,3 +20,10 @@ To see my whole research as well as what my perfect coding setup is, locate to m
 
 ## Sources
 You can see a full list of the sources I've used in my [Wiki](https://github.com/cenikk/datingapp/wiki/5.0-Sources)
+
+## MongoDB
+Our database stores the users basic information and his/her favorite movies or series.
+To get all the film information were using an Api which is: http://www.omdbapi.com/
+
+Our database design(Api not included)
+![Database](https://github.com/cenikk/datingapp/master/assets/database.jpg)
