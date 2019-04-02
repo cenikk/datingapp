@@ -1,6 +1,6 @@
 // Require (load) NPM Modules 
 require('dotenv').config();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8000;
 const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
