@@ -1,0 +1,42 @@
+include partials/head.pug
+header
+    nav
+        ul
+            li
+                a(href='javascript:history.back()')
+                    i.fas.fa-chevron-left
+            li Over ons
+            li
+                a(href='index.html')
+                    img(src='../../static/img/logo.png', alt='logo')
+main
+    article
+        h1 Matchen op wat uitmaakt
+        p
+            | Op LoveSome, zijn we toegewijd om mensen te helpen liefde en geluk te vinden door middel van zinvolle verbindingen. Ons unieke algoritme komt overeen met wat echt belangrijk is.
+    div
+        figure
+            img.profile_img(src='#{team[0].pic}', alt='aaron-smith')
+            h2
+                | #{team[0].firstName}
+            p
+                | #{team[0].position}
+        figure
+            img.profile_img(src='#{team[1].pic}', alt='blake-washington')
+            h2
+                | #{team[1].firstName}
+            p
+                | #{team[1].position}
+        figure
+            img.profile_img(src='#{team[2].pic}', alt='chris-hield')
+            h2
+                | #{team[2].firstName}
+            p
+                | #{team[2].position}
+        figure
+            img.profile_img(src='#{team[3].pic}', alt='diana-davis')
+            h2
+                | #{team[3].firstName}
+            p
+                | #{team[3].position}
+include partials/tail.pug

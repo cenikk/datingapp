@@ -1,5 +1,5 @@
 function login(req, res) {
-    res.render('login.ejs');
+    res.render('login.pug');
 }
 
 module.exports = login;

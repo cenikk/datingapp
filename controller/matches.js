@@ -21,7 +21,7 @@ function matches(req, res) {
         if (err) {
             console.log('An error has occured', err);
         } else {
-            res.render('matches.ejs', {
+            res.render('matches.pug', {
                 data,
                 user: req.session.user
             });
