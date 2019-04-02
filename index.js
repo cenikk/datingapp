@@ -54,6 +54,7 @@ const loginValidation = require('./controller/loginValidation.js');
 const addUser = require('./controller/addUser.js');
 const pageNotFound = require('./controller/pageNotFound.js');
 const movie = require('./controller/movie.js');
+const addMovie = require('./controller/addMovie.js');
 
 // Adding methods to my app (express)
 express()

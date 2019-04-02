@@ -1,3 +1,6 @@
+require('dotenv').config();
+const axios = require('axios');
+const slugify = require('slugify');
 const mongo = require('mongodb');
 let db = {
     password: process.env.DB_PASSWORD,
@@ -17,5 +20,24 @@ mongo.MongoClient.connect(url, {useNewUrlParser: true}, function (err, client) {
 });  
 
 function addMovie(req, res) {
-    
+    let id = req.params.id;
+    let movieId = slugify(req.body.movie).toLowerCase();
+    let api = "http://www.omdbapi.com/?t=" + movieId + "&apikey=" + process.env.API_KEY;
+
+    axios.get(api)
+        .then(function(resp) {
+            db.collection('user').updateOne( { _id: id }, {
+                movieid: req.body.movie,
+                title: resp.data.Title,
+                poster: resp.data.Poster,
+            }, function(err) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    res.redirect('/' + id);
+                }
+            });
+        });
 }
+
+module.exports = addMovie;
