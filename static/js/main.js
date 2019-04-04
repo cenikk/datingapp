@@ -14,9 +14,7 @@ input.addEventListener('input', getInput); // register for oninput
 function removeUser(e) {
     let node = e.target;
     let id = node.dataset.id; 
-
     let res = new XMLHttpRequest();
-
     res.open('DELETE', '/' + id);
     res.onload = onload;
     res.send();
@@ -25,11 +23,9 @@ function removeUser(e) {
         if (res.status !== 200) {
             throw new Error('Something went wrong');
         }
-
         window.location = 'matches';
     } 
 }
-
 
 //Live search 
 function getData () {
@@ -40,6 +36,7 @@ function getData () {
         console.log("Something is not right");
     }
 }
+
 function getInput(e) {
     html = "";
     while (searchresult.firstChild) {
