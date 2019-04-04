@@ -21,11 +21,13 @@ header
         a(href='#')  Gesprekken
       li
         a(href='<%= data.id %>')
-          img.nav_img(src='../static/upload/<%= data.profilepicture %>' alt='<%= data.firstName %>')
+          img.nav_img(src='../static/upload/<%= data.profilepicture %>', alt='<%= data.firstName %>')
       li
         a(href='<%= data._id %>/logout')  Uitloggen
 main.addmovie
-  form(action='<%= data.id %>' method='POST')
+  form(action='<%= data.id %>', method='POST')
     label(for='movie') Zoek naar een film
-    input#movie(type='text' name='movie')
+    input(type='text', name='movie', id='movie')
     button(type='submit') Voeg film toe
+  section(id="results")
+include partials/tail.pug
