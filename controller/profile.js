@@ -24,7 +24,7 @@ function profile(req, res) {
         if (err) {
             console.log('An error has occured', err);
         } else {
-            res.render('profile.ejs', {
+            res.render('profile.pug', {
                 data,
                 user: req.session.user
             });

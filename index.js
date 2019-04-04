@@ -3,7 +3,6 @@ require('dotenv').config();
 const port = process.env.PORT || 8000;
 const express = require('express');
 const bodyParser = require('body-parser');
-const session = require('express-session');
 const multer = require('multer');
 const uploadFolder = multer({
     dest: 'static/upload',
@@ -31,6 +30,7 @@ mongo.MongoClient.connect(url, {useNewUrlParser: true}, function (err, client) {
 });  
 
 // Session settings
+const session = require('express-session');
 const sess = {
     secret: process.env.SESSION_SECRET,
     resave: false,
@@ -58,14 +58,14 @@ const addMovie = require('./controller/addMovie.js');
 
 // Adding methods to my app (express)
 express()
-    //S erve images, CSS files and JS in a directory called "static"
+    //Serve images, CSS files and JS in a directory called "static"
     .use('/static', express.static('static'))
     .use(bodyParser.urlencoded({ extended: true }))
     .use(bodyParser.json()) // parse application/json (radiobuttons value)
     .use(session(sess))
     
     // Configure settings for express
-    .set('view engine', 'ejs')
+    .set('view engine', 'pug')
     .set('views', 'view')
     
     // Make different routes (Method(Path, Handler))
