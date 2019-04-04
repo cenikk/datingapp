@@ -21,7 +21,7 @@ function movie(req, res) {
         if (err) {
             console.log('An error has occured', err);
         } else {
-            res.render('movie.ejs', {
+            res.render('movie.pug', {
                 data,
                 user: req.session.user
             });
