@@ -66,23 +66,23 @@ function removeUser(e) {
     });
     searchresult.insertAdjacentHTML('beforeend', html);
 
-    add = document.querySelectorAll('#list li');
+    add = document.querySelectorAll('article');
     add.forEach(function(currentBtn){
       currentBtn.addEventListener('click', onadd);
     });
   }
 
-  function onadd(ev) {
-    var node = ev.target;
-    var id = node.dataset.id;
-    var res = new XMLHttpRequest();
-    res.open('GET', '/' + id);
-    res.onload = onload;
-    res.send();
-    function onload() {
-      if (res.status !== 200) {
-        throw new Error('Could not delete!');
-      }
-      window.location = '/';  
+function onadd(ev) {
+  var node = ev.target;
+  var id = node.dataset.id;
+  var res = new XMLHttpRequest();
+  res.open('GET', '/' + id);
+  res.onload = onload;
+  res.send();
+  function onload() {
+    if (res.status !== 200) {
+      throw new Error('Could not delete!');
     }
+    window.location = '/';  
   }
+}

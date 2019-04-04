@@ -21,9 +21,7 @@ mongo.MongoClient.connect(url, {useNewUrlParser: true}, function (err, client) {
 
 function addMovie(req, res) {
     let id = req.params.id;
-    let movieId = slugify(req.body.movie).toLowerCase();
-    let api = "http://www.omdbapi.com/?t=" + movieId + "&apikey=" + process.env.API_KEY;
-
+    let api = "http://www.omdbapi.com/?i=" + id + "&apikey=" + process.env.API_KEY;
     axios.get(api)
         .then(function(resp) {
             db.collection('user').updateOne( { _id : mongo.ObjectID(id) }, {

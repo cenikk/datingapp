@@ -5,6 +5,7 @@ head
   meta(name='viewport' content='width=device-width, initial-scale=1')
   link(rel='shortcut icon' type='image/png' href='../../static/img/logo.png')
   link(rel='stylesheet' type='text/css' href='../../static/css/logged_in.css')
+  link(rel='stylesheet' type='text/css' href='../../static/css/search.css')
   link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css' integrity='sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU' crossorigin='anonymous')
   link(rel='stylesheet' href='https://use.typekit.net/etb5dmm.css')
   title LoveSome
@@ -22,7 +23,7 @@ header
         a(href='#')  Gesprekken
       li
         a(href='<%= data.id %>')
-          img.nav_img(src='../static/upload/<%= data.profilepicture %>' alt='<%= data.firstName %>')
+          img.nav_img(src='../static/upload/'+data.profilepicture, alt='#{data.firstName}')
       li
         a(href='<%= data._id %>/logout')  Uitloggen
 main.addmovie
@@ -30,3 +31,5 @@ main.addmovie
     label(for='movie') Zoek naar een film
     input#movie(type='text' name='movie')
     button(type='submit') Voeg film toe
+  section(id='results')
+include partials/tail.pug
