@@ -53,6 +53,7 @@ const remove = require('./controller/remove.js');
 const loginValidation = require('./controller/loginValidation.js');
 const addUser = require('./controller/addUser.js');
 const pageNotFound = require('./controller/pageNotFound.js');
+const wrongCredentials = require('./controller/wrongCredentials.js');
 
 // Adding methods to my app (express)
 express()
@@ -74,6 +75,7 @@ express()
     .get('/:id', redirectLogin, profile) // Homepage after login
     .get('/:id/matches', redirectLogin, matches)
     .get('/:id/logout', redirectLogin, logout)
+    .get('/login/error', wrongCredentials)
     
     .delete('/:id', remove)
     
