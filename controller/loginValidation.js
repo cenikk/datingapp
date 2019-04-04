@@ -20,29 +20,29 @@ function loginValidation(req, res) {
     var username = req.body.username;
     var password = req.body.password;
     db.collection('user').findOne({
-      username: username,
-      password: password
+        username: username,
+        password: password
     }, done);
     
     function done(err, data) {
-      if(err) {
-        res.json(err);
-      }
-      if (data) {
-        let id = data._id;
-        req.session.user = {
-            id: id,
-            username: req.body.username,
-            password: req.body.password,
-            picture: data.profilepicture
-        };
-        res.redirect('/' + id);
-      } 
-      else {
-        res.redirect('/login/error');
-      }
+        if(err) {
+            res.json(err);
+        }
+        if (data) {
+            let id = data._id;
+            req.session.user = {
+                id: id,
+                username: req.body.username,
+                password: req.body.password,
+                picture: data.profilepicture
+            };
+            res.redirect('/' + id);
+        } 
+        else {
+            res.redirect('/login/error');
+        }
     }
-  }
+}
 
 module.exports = loginValidation;
 
