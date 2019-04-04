@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 meta(charset='UTF-8')
 meta(name='viewport', content='width=device-width, initial-scale=1')
 link(rel='shortcut icon', type='image/png', href='../../static/img/logo.png')
@@ -6,12 +7,27 @@ link(rel='stylesheet', type='text/css', href='../../static/css/search.css')
 link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.3.1/css/all.css', integrity='sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU', crossorigin='anonymous')
 link(rel='stylesheet', href='https://use.typekit.net/etb5dmm.css')
 title LoveSome
+=======
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  link(rel='shortcut icon' type='image/png' href='../../static/img/logo.png')
+  link(rel='stylesheet' type='text/css' href='../../static/css/logged_in.css')
+  link(rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css' integrity='sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU' crossorigin='anonymous')
+  link(rel='stylesheet' href='https://use.typekit.net/etb5dmm.css')
+  title LoveSome
+>>>>>>> 5f5347fe98f2d7ef508e858d06e1cfb1a0a72b50
 header
   nav
     ul
       li
         a(href='/')
+<<<<<<< HEAD
           img(src='../../static/img/logo.png', alt='logo')
+=======
+          img(src='../../static/img/logo.png' alt='logo')
+>>>>>>> 5f5347fe98f2d7ef508e858d06e1cfb1a0a72b50
       li
         a(href='<%= data._id %>/matches')  Blader door Matches
       li
@@ -20,6 +36,7 @@ header
         a(href='#')  Gesprekken
       li
         a(href='<%= data.id %>')
+<<<<<<< HEAD
           img.nav_img(src='../static/upload/<%= data.profilepicture %>', alt='<%= data.firstName %>')
       li
         a(href='<%= data._id %>/logout')  Uitloggen
@@ -30,3 +47,13 @@ main.addmovie
     button(type='submit') Voeg film toe
   section(id="results")
 include partials/tail.pug
+=======
+          img.nav_img(src='../static/upload/<%= data.profilepicture %>' alt='<%= data.firstName %>')
+      li
+        a(href='<%= data._id %>/logout')  Uitloggen
+main.addmovie
+  form(action='<%= data.id %>' method='POST')
+    label(for='movie') Zoek naar een film
+    input#movie(type='text' name='movie')
+    button(type='submit') Voeg film toe
+>>>>>>> 5f5347fe98f2d7ef508e858d06e1cfb1a0a72b50
