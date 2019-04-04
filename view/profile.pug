@@ -43,7 +43,8 @@ main.profile
         section
             h4 Films
             h1 Films die ik leuk vind
-            h2 #{data.movieid}
-            img(src= data.poster, alt="movie" class="movieimg")
+            - for (let i = 0; i < data.movie.length; i++)
+                h2 #{data.movie[i].title}
+                img.image(src=data.movie[i].poster)
             a(href= data._id+'/movie') Voeg een film toe
 include partials/tail.pug
