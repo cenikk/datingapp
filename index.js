@@ -53,6 +53,8 @@ const remove = require('./controller/remove.js');
 const loginValidation = require('./controller/loginValidation.js');
 const addUser = require('./controller/addUser.js');
 const pageNotFound = require('./controller/pageNotFound.js');
+const movie = require('./controller/movie.js');
+const addMovie = require('./controller/addMovie.js');
 
 // Adding methods to my app (express)
 express()
@@ -74,11 +76,13 @@ express()
     .get('/:id', redirectLogin, profile) // Homepage after login
     .get('/:id/matches', redirectLogin, matches)
     .get('/:id/logout', redirectLogin, logout)
+    .get('/:id/movie', redirectLogin, movie)
     
     .delete('/:id', remove)
     
     .post('/login', loginValidation)
     .post('/register', uploadFolder.single('profilepicture'), addUser)
+    .post('/:id/movie', addMovie)
     
     .use(pageNotFound)
     

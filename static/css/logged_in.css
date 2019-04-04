@@ -123,12 +123,14 @@ img[alt="logo"] {
 
 .profile .content {
     padding-top: 4rem;
+    padding-bottom: 1rem;
 }
 
 .profile .content section {
     height: 20rem;
     width: 65rem;
     margin: auto;
+    margin-bottom: 1rem;
     background-color: #fff;
     padding: 1.1rem 2rem;
     color: rgb(50, 50, 50);
@@ -160,4 +162,8 @@ img[alt="logo"] {
 
 .matches {
     padding: 2rem;
+}
+
+.movieimg {
+    width: 7rem;
 }
