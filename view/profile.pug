@@ -43,8 +43,11 @@ main.profile
         section
             h4 Films
             h1 Films die ik leuk vind
+<<<<<<< HEAD
             h2 #{data.movieid}
             img(src= data.poster, alt="movie" class="movieimg")
+=======
+>>>>>>> 57907a1e889b53459c3d04facb138cff5c992531
             - for (let i = 0; i < data.movie.length; i++)
                 h2 #{data.movie[i].title}
                 img.image(src=data.movie[i].poster)
