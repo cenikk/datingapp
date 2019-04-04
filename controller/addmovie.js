@@ -21,15 +21,18 @@ mongo.MongoClient.connect(url, {useNewUrlParser: true}, function (err, client) {
 
 function addMovie(req, res) {
     let id = req.params.id;
+    console.log(id);
     let movieId = slugify(req.body.movie).toLowerCase();
     let api = "http://www.omdbapi.com/?t=" + movieId + "&apikey=" + process.env.API_KEY;
 
     axios.get(api)
         .then(function(resp) {
-            db.collection('user').updateOne( { _id: id }, {
-                movieid: req.body.movie,
-                title: resp.data.Title,
-                poster: resp.data.Poster,
+            db.collection('user').updateOne( { "username": "cenikk" }, {
+                $push: {
+                    movieid: req.body.movie,
+                    title: resp.data.Title,
+                    poster: resp.data.Poster,
+                }
             }, function(err) {
                 if (err) {
                     console.log(err);

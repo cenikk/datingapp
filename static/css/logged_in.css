@@ -163,3 +163,7 @@ img[alt="logo"] {
 .matches {
     padding: 2rem;
 }
+
+.movieimg {
+    width: 7rem;
+}
