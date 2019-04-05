@@ -1,7 +1,7 @@
 const   searchresult = document.getElementById('results'),
-        input = document.querySelector('#movie');
-let     remove = document.querySelector('#js-remove'),
-        search = "",
+        input = document.querySelector('#movie'),
+        remove = document.querySelector('#js-remove');
+let     search = "",
         html = '',
         request = new XMLHttpRequest();
         add = "";
@@ -14,7 +14,7 @@ if (remove) {
 function removeUser(e) {
     let node = e.target;
     let id = node.dataset.id; 
-
+    console.log(id);
     let res = new XMLHttpRequest();
 
     res.open('DELETE', '/' + id);

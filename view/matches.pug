@@ -20,7 +20,7 @@ header
                 a(href='#')  Gesprekken
             li
                 a(href='/'+user.id)
-                    img.nav_img(src='../static/upload/'+user.picture, alt='#{user.username}')
+                    img.nav_img(src='../static/upload/'+user.picture, alt=user.username)
             li
                 a(href= '/matches/logout/')  Uitloggen
 section.matches
@@ -32,8 +32,8 @@ section.matches
       - for (let i = 0; i < data.length; i++) {
             li                        
                 h3 #{data[i].username} 
-                img.match_img(src='../static/upload/'+data[i].profilepicture, alt='#{data[i].firstName}')
-                button(class='unmatch' id='js-remove.danger' data-id='#{data[i]._id}') Mehh
+                img.match_img(src='../static/upload/'+data[i].profilepicture, alt=data[i].firstName)
+                button(class='unmatch', id='js-remove', data-id=data[i]._id) Mehh
                 button(class='message') Leuk
       - }
 include partials/tail.pug
