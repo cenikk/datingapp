@@ -166,6 +166,12 @@ button[type="submit"] {
     width: 20rem;
 }
 
+#tryagain {
+    color: red;
+    margin-top: 4em;
+    font-size: 1em;
+}
+
 @media (max-width: 1300px) {
     nav ul li:nth-child(1) { justify-self: center; transition: .4s linear;}
     nav ul li:nth-child(3) { justify-self: center; transition: .4s linear;}
