@@ -2,19 +2,19 @@ include partials/header.pug
 section.register
     form(action='/register', enctype='multipart/form-data', method='POST')
         label(for='username') Gebruikersnaam
-        input#username(type='text', name='username')
+        input#username(type='text', name='username', required)
         label(for='password') Wachtwoord
-        input#password(type='password', name='password')
+        input#password(type='password', name='password', required)
         .select_gender
             label(for='gender') Geslacht
             div
-                input#man(type='radio', name='gender', value='man')
+                input#man(type='radio', name='gender', value='man', required)
                 label(for='man') Man
             div
-                input#vrouw(type='radio', name='gender', value='vrouw')
+                input#vrouw(type='radio', name='gender', value='vrouw', required)
                 label(for='vrouw') Vrouw
         label(for='profilePic') Profielfoto
-        input#profilePic(type='file', name='profilepicture', accept='image/*')
+        input#profilePic(type='file', name='profilepicture', accept='image/*', required)
         p Deze informatie wordt weergeven aan andere gebruikers
         button(type='submit') Volgende
 include partials/tail.pug
