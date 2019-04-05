@@ -21,7 +21,8 @@ function addUser(req, res) {
         username: req.body.username.toLowerCase(),
         password: req.body.password,
         gender: req.body.gender,
-        profilepicture: req.file ? req.file.filename : null
+        profilepicture: req.file ? req.file.filename : null,
+        movie: []
     }, function(err, data) {
         if (err) {
             console.log('An error has occured', err);
