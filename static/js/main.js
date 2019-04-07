@@ -1,5 +1,9 @@
 const searchresult = document.getElementById('results'),
-    input = document.querySelector('#movie');
+    input = document.querySelector('#movie'),
+    form1 = document.querySelector('.section1'),
+    form2 = document.querySelector('.section2'),
+    form3 = document.querySelector('.section3');
+
 let remove = document.querySelector('#js-remove'),
     search = "",
     html = '',
@@ -9,7 +13,9 @@ let remove = document.querySelector('#js-remove'),
 if (remove) {
     remove.addEventListener('click', removeUser);
 }
-input.addEventListener('input', getInput); // register for oninput
+if (input) {
+    input.addEventListener('input', getInput); // register for oninput
+}
 
 function removeUser(e) {
     let node = e.target;
@@ -83,3 +89,35 @@ function onadd(ev) {
         window.location = '/';  
     }
 }
+
+form1.querySelector('button').addEventListener('click', function(e) {
+    e.preventDefault();
+    form1.style.left = "-40rem";
+    form1.style.opacity = "0";
+
+    setTimeout(function() {
+        form2.style.display = "grid";
+    }, 400);
+
+    setTimeout(function() {
+        form1.style.display = "none";
+        form2.style.opacity = "1";
+        form2.style.left = "0";
+    }, 500);
+});
+
+form2.querySelector('button').addEventListener('click', function(e) {
+    e.preventDefault();
+    form2.style.left = "-40rem";
+    form2.style.opacity = "0";
+
+    setTimeout(function() {
+        form3.style.display = "grid";
+    }, 400);
+
+    setTimeout(function() {
+        form2.style.display = "none";
+        form3.style.opacity = "1";
+        form3.style.left = "0";
+    }, 500);
+});

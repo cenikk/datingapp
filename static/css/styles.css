@@ -59,7 +59,7 @@ section form {
 }
 
 section form legend {
-    font-size: 2rem;
+    font-size: 1.7rem;
     text-align: center;
     font-style: italic;
     margin-bottom: 4rem;
@@ -69,6 +69,27 @@ section form label {
     font-size: 1.6rem;
     font-weight: 500;
     margin-bottom: .4rem;
+    text-align: center;
+}
+
+section form label[for='profilePic'] {
+    display: grid;
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-align: center;
+    background: #dcdcdc;
+    color: rgb(26, 26, 26);
+    height: 12rem;
+    width: 13rem;
+    border-radius: 100%;
+    justify-items: center;
+    align-items: center;
+    margin: auto;
+    margin-bottom: 2.4rem;
+}
+
+section form input[type="file"] {
+    color: rgb(26, 26, 26);
 }
 
 section form input {
@@ -151,7 +172,13 @@ section form p {
     margin-bottom: .5rem;
 }
 
-button[type="submit"] {
+.register-form {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(3, auto);
+}
+
+.register-form button {
     min-width: 25.3rem;
     padding: .7rem;
     font-size: 1.5rem;
@@ -160,6 +187,61 @@ button[type="submit"] {
     background-color: var(--button-color);
     border: none;
     border-radius: 5px;
+}
+
+fieldset {
+    display: grid;
+    justify-items: center;
+    border: none;
+}
+
+.section1, .section2, .section3 {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    color: var(--textColor);
+    position: relative;
+    transition: all .4s linear;
+    right: 0;
+    left: 0;
+}
+
+.section2 {
+    display: none;
+    left: 20rem;
+    opacity: 0;
+}
+
+.section3 {
+    display: none;
+    left: 20rem;
+    opacity: 0;
+}
+
+.dateofbirth, .dateofbirth div {
+    display: grid;
+    justify-items: center;
+    position: relative;
+}
+
+.dateofbirth div {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1rem;
+    max-width: 25.4rem;
+}
+
+.dateofbirth div input {
+    width: 78%;
+    padding: .6rem .8rem;
+}
+
+input[id="zipcode"] {
+    max-width: 16.3rem;
+}
+
+input[id="zipcodeLetters"] {
+    max-width: 5rem;
+    margin-left: 1rem;
 }
 
 .profile_img {

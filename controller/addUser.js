@@ -21,6 +21,13 @@ function addUser(req, res) {
         username: req.body.username.toLowerCase(),
         password: req.body.password,
         gender: req.body.gender,
+        birthday: req.body.day,
+        birthmonth: req.body.month,
+        birthyear: req.body.year,
+        country: req.body.counry,
+        city: req.body.city,
+        zipcode: req.body.zipcode,
+        zipcodeletters: req.body.zipcodelet,
         profilepicture: req.file ? req.file.filename : null,
         movie: []
     }, function(err, data) {
