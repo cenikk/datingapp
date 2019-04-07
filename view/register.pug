@@ -1,20 +1,43 @@
 include partials/header.pug
 section.register
     form(action='/register', enctype='multipart/form-data', method='POST')
-        label(for='username') Gebruikersnaam
-        input#username(type='text', name='username')
-        label(for='password') Wachtwoord
-        input#password(type='password', name='password')
-        .select_gender
-            label(for='gender') Geslacht
-            div
-                input#man(type='radio', name='gender', value='man')
-                label(for='man') Man
-            div
-                input#vrouw(type='radio', name='gender', value='vrouw')
-                label(for='vrouw') Vrouw
-        label(for='profilePic') Profielfoto
-        input#profilePic(type='file', name='profilepicture', accept='image/*')
-        p Deze informatie wordt weergeven aan andere gebruikers
-        button(type='submit') Volgende
+        fieldset.section1#description
+            legend Vertel een beetje over jezelf
+            label(for='username') Gebruikersnaam
+            input#username(type='text', name='username')
+            label(for='password') Wachtwoord
+            input#password(type='password', name='password')
+            .select_gender
+                label(for='gender') Geslacht
+                div
+                    input#man(type='radio', name='gender', value='man')
+                    label(for='man') Man
+                div
+                    input#vrouw(type='radio', name='gender', value='vrouw')
+                    label(for='vrouw') Vrouw
+            .dateofbirth
+                label(for='day') Geboortedatum
+                div
+                    input#day(type='text', name='dag', placeholder='Dag')
+                    input#month(type='text', name='maand', placeholder='Maand')
+                    input#year(type='text', name='jaar', placeholder='Jaar')
+            p Deze informatie wordt weergeven aan andere gebruikers
+            button Volgende
+        fieldset.section2#place
+            legend Hey, waar woon je momenteel?
+            label(for='country') Land
+            input#country(type='text', name='land' placeholder="Nederland")
+            label(for='city') Stad
+            input#city(type='text', name='stad' placeholder="Amsterdam")
+            label(for='zipcode') Postcode
+            .zipcodeInputs
+                input#zipcode(type='text', name='postcode' placeholder="1012")
+                input#zipcodeLetters(type='text', name='postcode_letters' placeholder="AB")
+            p Deze informatie wordt weergeven aan andere gebruikers
+            button Volgende
+        fieldset.section3#picture
+            legend Nu nog alleen een foto van jezelf
+            label(for='profilePic') Profielfoto
+            input#profilePic(type='file', name='profilepicture', accept='image/*')
+            button(type='submit') Volgende
 include partials/tail.pug

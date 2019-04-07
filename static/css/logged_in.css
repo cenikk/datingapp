@@ -73,7 +73,7 @@ img[alt="logo"] {
     margin: auto; padding: 1.3rem 0;
 }
 
-.profile section div {
+.profile .header section div {
     width: 180px;
     height: 180px;
     position: absolute;
@@ -166,4 +166,14 @@ img[alt="logo"] {
 
 .movieimg {
     width: 7rem;
+}
+
+.content section div {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50px, auto));
+    grid-gap: 1rem;
+}
+
+.content figure img {
+    width: 8rem;
 }

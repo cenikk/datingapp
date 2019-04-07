@@ -17,7 +17,7 @@ mongo.MongoClient.connect(url, {useNewUrlParser: true}, function (err, client) {
 });  
 
 function loginValidation(req, res) {
-    let username = req.body.username;
+    let username = req.body.username.toLowerCase();
     let password = req.body.password;
     db.collection('user').findOne({
         username: username,
