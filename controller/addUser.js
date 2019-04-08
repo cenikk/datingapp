@@ -24,7 +24,7 @@ function addUser(req, res) {
         birthday: req.body.day,
         birthmonth: req.body.month,
         birthyear: req.body.year,
-        country: req.body.counry,
+        country: req.body.country,
         city: req.body.city,
         zipcode: req.body.zipcode,
         zipcodeletters: req.body.zipcodelet,

@@ -93,6 +93,7 @@ img[alt="logo"] {
     left: 12.6rem; top: 1.5rem;
     font-size: 2rem; font-weight: normal; letter-spacing: 0.1rem;
     min-width: 40rem;
+    text-transform: capitalize;
 }
 
 .profile section div data-caption {

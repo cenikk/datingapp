@@ -12,6 +12,7 @@ body {
     background-size: cover;
     background-position: center;
     background-position-y: -1px;
+    background-repeat: no-repeat;
     color: var(--text-color);
 }
 
@@ -62,7 +63,8 @@ section form legend {
     font-size: 1.7rem;
     text-align: center;
     font-style: italic;
-    margin-bottom: 4rem;
+    margin-bottom: 1rem;
+    padding-top: 3rem;
 }
 
 section form label {
@@ -178,7 +180,7 @@ section form p {
     grid-template-columns: repeat(3, auto);
 }
 
-.register-form button {
+.register-form button, .login button {
     min-width: 25.3rem;
     padding: .7rem;
     font-size: 1.5rem;
@@ -187,6 +189,7 @@ section form p {
     background-color: var(--button-color);
     border: none;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 fieldset {
@@ -218,6 +221,40 @@ fieldset {
     opacity: 0;
 }
 
+.js-disabled {
+    height: auto;
+}
+
+.js-disabled .section1, .js-disabled .section2, .js-disabled .section3 {
+    opacity: 1;
+    display: grid;
+    left: 0;
+}
+
+.js-disabled .register-form, .js-disabled section form {
+    display: block;
+}
+
+.js-disabled input, .js-disabled form button {
+    margin-left: auto; margin-right: auto;
+}
+
+.js-disabled p, .js-disabled .zipcodeInputs {
+    text-align: center;
+}
+
+.js-disabled legend {
+    padding-top: 0;
+}
+
+.js-disabled .section3 button {
+    margin-bottom: 3rem;
+}
+
+.js-disabled .tracker, .js-disabled .section1 p, .js-disabled .section1 button, .js-disabled .section2 p, .js-disabled .section2 button, .js-disabled .section2 legend, .js-disabled .section3 legend  {
+    display: none;
+}
+
 .dateofbirth, .dateofbirth div {
     display: grid;
     justify-items: center;
@@ -246,6 +283,25 @@ input[id="zipcodeLetters"] {
 
 .profile_img {
     width: 20rem;
+}
+
+.tracker {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+    position: absolute;
+    top: 0rem;
+}
+
+.tracker div {
+    width: 1.2rem;
+    height: 1.2rem;
+    background-color: rgba(202, 202, 202, 0.48);
+    border-radius: 100%;
+}
+
+.tracker #active {
+    background-color: rgba(40, 137, 216, 0.60);
 }
 
 #tryagain {

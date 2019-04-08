@@ -1,5 +1,5 @@
 include partials/header.pug
-section.register
+section.register.js-disabled
     form.register-form(action='/register', enctype='multipart/form-data', method='POST')
         fieldset.section1#description
             legend Vertel een beetje over jezelf
@@ -40,4 +40,8 @@ section.register
             label(for='profilePic') Profielfoto
             input#profilePic(type='file', name='profilepicture', accept='image/*')
             button(type='submit') Volgende
+        .tracker
+            .description#active
+            .place
+            .picture
 include partials/tail.pug
