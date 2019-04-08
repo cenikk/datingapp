@@ -180,8 +180,8 @@ section form p {
     grid-template-columns: repeat(3, auto);
 }
 
-.register-form button, .login button {
-    min-width: 25.3rem;
+.register-form fieldset a, .login a, .register-form fieldset button {
+    min-width: 24rem;
     padding: .7rem;
     font-size: 1.5rem;
     letter-spacing: 0.3px;
@@ -190,6 +190,8 @@ section form p {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    text-decoration: none;
+    text-align: center;
 }
 
 fieldset {
@@ -235,7 +237,7 @@ fieldset {
     display: block;
 }
 
-.js-disabled input, .js-disabled form button {
+.js-disabled input, .js-disabled form fieldset button {
     margin-left: auto; margin-right: auto;
 }
 
@@ -249,9 +251,10 @@ fieldset {
 
 .js-disabled .section3 button {
     margin-bottom: 3rem;
+    min-width: 25.4rem;
 }
 
-.js-disabled .tracker, .js-disabled .section1 p, .js-disabled .section1 button, .js-disabled .section2 p, .js-disabled .section2 button, .js-disabled .section2 legend, .js-disabled .section3 legend  {
+.js-disabled .tracker, .js-disabled .section1 p, .js-disabled .section1 a, .js-disabled .section2 p, .js-disabled .section2 a, .js-disabled .section2 legend, .js-disabled .section3 legend  {
     display: none;
 }
 
@@ -298,6 +301,7 @@ input[id="zipcodeLetters"] {
     height: 1.2rem;
     background-color: rgba(202, 202, 202, 0.48);
     border-radius: 100%;
+    cursor: pointer;
 }
 
 .tracker #active {

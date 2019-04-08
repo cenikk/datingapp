@@ -22,7 +22,7 @@ section.register.js-disabled
                     input#month(type='text', name='month', placeholder='Maand')
                     input#year(type='text', name='year', placeholder='Jaar')
             p Deze informatie wordt weergeven aan andere gebruikers
-            button Volgende
+            a(href='#place') Volgende
         fieldset.section2#place
             legend Hey, waar woon je momenteel?
             label(for='country') Land
@@ -34,7 +34,7 @@ section.register.js-disabled
                 input#zipcode(type='text', name='zipcode' placeholder="1012")
                 input#zipcodeLetters(type='text', name='zipcodelet' placeholder="AB")
             p Deze informatie wordt weergeven aan andere gebruikers
-            button Volgende
+            a(href='#picture') Volgende
         fieldset.section3#picture
             legend Nu nog alleen een foto van jezelf
             label(for='profilePic') Profielfoto
@@ -42,6 +42,9 @@ section.register.js-disabled
             button(type='submit') Volgende
         .tracker
             .description#active
+                a(href='#place')
             .place
+                a(href='#place')
             .picture
+                a(href='#picture')
 include partials/tail.pug
