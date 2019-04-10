@@ -7,29 +7,29 @@ link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.3.1/css/all
 link(rel='stylesheet', href='https://use.typekit.net/etb5dmm.css')
 title LoveSome
 header
-    nav
-        ul
-            li
-                a(href='/')
-                    img(src='../../static/img/logo.png', alt='logo')
-            li
-                a(href='#')  Blader door Matches
-            li
-                a(href='#')  Likes
-            li
-                a(href='#')  Gesprekken
-            li
-                a(href='/'+user.id)
-                    img.nav_img(src='../static/upload/'+user.picture, alt='#{user.username}')
-            li
-                a(href= '/matches/logout/')  Uitloggen
+        nav
+                ul
+                        li
+                                a(href='/')
+                                        img(src='../../static/img/logo.png', alt='logo')
+                        li
+                                a(href='#')  Blader door Matches
+                        li
+                                a(href='#')  Likes
+                        li
+                                a(href='#')  Gesprekken
+                        li
+                                a(href='/'+user.id)
+                                        img.nav_img(src='../static/upload/'+user.picture, alt='#{user.username}')
+                        li
+                                a(href= '/matches/logout/')  Uitloggen
 section.matches
     h1 Potentiële matches
-              - for (let i = 0; i < data.length; i++) {
+            - for (let i = 0; i < data.length; i++) {
                     div
-                        div
-                            h3 Gebruikersnaam: #{data[i].username} 
-                            img.match_img(src='../static/upload/'+data[i].profilepicture, alt='#{data[i].firstName}')
-                            button#js-remove.danger(data-id='#{data[i]._id}') Unmatch
-              - }
+                            div
+                                    h3 Gebruikersnaam: #{data[i].username} 
+                                    img.match_img(src='../static/upload/'+data[i].profilepicture, alt='#{data[i].firstName}')
+                                    button#js-remove.danger(data-id='#{data[i]._id}') Unmatch
+            - }
 include partials/tail.pug
