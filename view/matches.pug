@@ -1,28 +1,4 @@
-doctype html
-meta(charset='UTF-8')
-meta(name='viewport', content='width=device-width, initial-scale=1')
-link(rel='shortcut icon', type='image/png', href='../../static/img/logo.png')
-link(rel='stylesheet', type='text/css', href='../../static/css/logged_in.css')
-link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.3.1/css/all.css', integrity='sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU', crossorigin='anonymous')
-link(rel='stylesheet', href='https://use.typekit.net/etb5dmm.css')
-title LoveSome
-header
-    nav
-        ul
-            li
-                a(href='/')
-                    img(src='../../static/img/logo.png', alt='logo')
-            li
-                a(href='#')  Blader door Matches
-            li
-                a(href='#')  Likes
-            li
-                a(href='#')  Gesprekken
-            li
-                a(href='/'+user.id)
-                    img.nav_img(src='../static/upload/'+user.picture, alt=user.username)
-            li
-                a(href= '/matches/logout/')  Uitloggen
+include partials/header-loggedin.pug
 section.matches
     h1 Potentiële matches (#{intrest}en)
     p Jouw Keuzes: 

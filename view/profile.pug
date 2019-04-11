@@ -1,50 +1,27 @@
-doctype html
-meta(charset='UTF-8')
-meta(name='viewport', content='width=device-width, initial-scale=1')
-link(rel='shortcut icon', type='image/png', href='../../static/img/logo.png')
-link(rel='stylesheet', type='text/css', href='../../static/css/logged_in.css')
-link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.3.1/css/all.css', integrity='sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU', crossorigin='anonymous')
-link(rel='stylesheet', href='https://use.typekit.net/etb5dmm.css')
-title LoveSome
-header
-    nav
-        ul
-            li
-                a(href='/')
-                    img(src='../../static/img/logo.png', alt='logo')
-            li
-                a(href= data._id+'/matches')  Blader door Matches
-            li
-                a(href='#')  Likes
-            li
-                a(href='#')  Gesprekken
-            li
-                a(href='#{data.id}')
-                    img.nav_img(src='../static/upload/'+data.profilepicture, alt='#{data.firstName}')
-            li
-                a(href= data._id+'/logout')  Uitloggen
-main.profile
-    article.header
-        section
-            div
-                if user 
-                        img.profile_img(src='../static/upload/'+data.profilepicture, alt='#{data.firstName}')
-                        h1 #{user.username}
-                        data-caption
-                            p 21
-                            span .
-                            p #{data.gender}
-                        |                   
-    article.content
-        section
-            h4 Over mij
-            h1 Korte omschrijving
-            textarea#desc(name='omschrijving', cols='120', rows='12', placeholder='Vertel iets over jezelf')
-        section
-            h4 Films
-            h1 Films die ik leuk vind
-            - for (let i = 0; i < data.movie.length; i++)
-                h2 #{data.movie[i].title}
-                img.image(src=data.movie[i].poster)
-            a(href= data._id+'/movie') Voeg een film toe
-include partials/tail.pug
+include partials/header-loggedin.pug
+body
+    main.profile
+        article.header
+            section
+                div
+                    if user 
+                            img.profile_img(src='../static/upload/'+data.profilepicture, alt='#{data.firstName}')
+                            h1 #{user.username}
+                            data-caption
+                                p 21
+                                span .
+                                p #{data.gender}
+                            |                   
+        article.content
+            section
+                h4 Over mij
+                h1 Korte omschrijving
+                textarea#desc(name='omschrijving', cols='120', rows='12', placeholder='Vertel iets over jezelf')
+            section
+                h4 Films
+                h1 Films die ik leuk vind
+                - for (let i = 0; i < data.movie.length; i++)
+                    h2 #{data.movie[i].title}
+                    img.image(src=data.movie[i].poster)
+                a(href= data._id+'/movie') Voeg een film toe
+    include partials/tail.pug

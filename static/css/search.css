@@ -1,8 +1,7 @@
 section{
 	display: grid;
-	width: 100%;
-	grid-template-columns: repeat(5, 1fr);
-	padding: 0.2em;
+	grid-template-columns: repeat(auto-fit, minmax(200px, auto));
+	grid-gap: 2rem;
 }
 article{
 	display: inline;
@@ -18,14 +17,14 @@ article img{
 	height: 14em;
 }
 article p{
-	background-color: black; 
-	bottom: 0;
-	color: white;
-	font-family: helvetica;
-	font-size: 0.8em;
-	margin: 0;
-	opacity: 0.8;
-	padding: 0.2em 0;
-	position: absolute;
-	width: inherit;
+    background-color: black;
+    position: absolute;
+    bottom: 0.3rem;
+    color: white;
+    font-family: helvetica;
+    font-size: 0.8em;
+    margin: 0;
+    opacity: 0.8;
+    padding: 0.7em 1rem;
+    max-width: 7.4rem;
 }
