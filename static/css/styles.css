@@ -180,8 +180,22 @@ section form p {
     grid-template-columns: repeat(3, auto);
 }
 
-.register-form fieldset a, .login a, .register-form fieldset button {
+.register-form fieldset a, .register-form fieldset button {
     min-width: 24rem;
+    padding: .7rem;
+    font-size: 1.5rem;
+    letter-spacing: 0.3px;
+    color: #3C3C3B;
+    background-color: var(--button-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+}
+
+.login button {
+    min-width: 25.4rem;
     padding: .7rem;
     font-size: 1.5rem;
     letter-spacing: 0.3px;

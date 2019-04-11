@@ -40,4 +40,62 @@ function addUser(req, res) {
     });
 }
 
-module.exports = addUser;
+function profile(req, res) {
+    let id = req.params.id;
+    db.collection('user').findOne({
+        _id: mongo.ObjectID(id)
+    }, function(err, data) {
+        if (err) {
+            console.log('An error has occured', err);
+        } else {
+            res.render('profile.pug', {
+                data,
+                user: req.session.user
+            });
+        }
+    });
+}
+
+function remove(req, res) {
+    let id = req.params.id;
+    db.collection('user').deleteOne({
+        _id: mongo.ObjectID(id)
+    }, function (err){
+        if (err) {
+            console.log('An error has occured', err);
+        } else {
+            res.json({status: 'ok'});
+        }
+    });
+}
+
+function matches(req, res) {
+    db.collection('user').find().toArray(function(err, data) {
+        if (err) {
+            console.log('An error has occured', err);
+        } else {
+            res.render('matches.pug', {
+                data,
+                user: req.session.user
+            });
+        }
+    });
+}
+
+function logout(req, res) {
+    req.session.destroy(function (err) {
+        if (err) {
+            console.log('An error has occured', err);
+        } else {
+            res.redirect('/');
+        }
+    });
+}
+
+module.exports = {
+    addUser,
+    profile,
+    remove,
+    matches,
+    logout
+};
