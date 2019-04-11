@@ -23,7 +23,7 @@ const url = `mongodb+srv://${db.username}:${db.password}@${db.cluster}-${db.host
 // Connect to Database
 mongo.MongoClient.connect(url, {useNewUrlParser: true}, function (err, client) {
     if (err) {
-        console.log("Failed to connect", err);
+        console.log('Failed to connect', err);
     } else {
         db = client.db(process.env.DB_NAME);
     }
@@ -55,6 +55,7 @@ const addUser = require('./controller/addUser.js');
 const pageNotFound = require('./controller/pageNotFound.js');
 const movie = require('./controller/movie.js');
 const addMovie = require('./controller/addMovie.js');
+const wrongCredentials = require('./controller/wrongCredentials.js');
 
 // Adding methods to my app (express)
 express()
@@ -77,6 +78,7 @@ express()
     .get('/:id/matches', redirectLogin, matches)
     .get('/:id/logout', redirectLogin, logout)
     .get('/:id/movie', redirectLogin, movie)
+    .get('/login/error', wrongCredentials)
     
     .delete('/:id', remove)
     

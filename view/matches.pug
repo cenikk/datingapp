@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 include partials/header-loggedin.pug
 section.matches
     h1 Potentiële matches (#{intrest}en)
@@ -12,4 +13,40 @@ section.matches
                 button(class='unmatch', id='js-remove', data-id=data[i]._id) Mehh
                 button(class='message') Leuk
       - }
+=======
+doctype html
+meta(charset='UTF-8')
+meta(name='viewport', content='width=device-width, initial-scale=1')
+link(rel='shortcut icon', type='image/png', href='../../static/img/logo.png')
+link(rel='stylesheet', type='text/css', href='../../static/css/logged_in.css')
+link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.3.1/css/all.css', integrity='sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU', crossorigin='anonymous')
+link(rel='stylesheet', href='https://use.typekit.net/etb5dmm.css')
+title LoveSome
+header
+        nav
+                ul
+                        li
+                                a(href='/')
+                                        img(src='../../static/img/logo.png', alt='logo')
+                        li
+                                a(href='#')  Blader door Matches
+                        li
+                                a(href='#')  Likes
+                        li
+                                a(href='#')  Gesprekken
+                        li
+                                a(href='/'+user.id)
+                                        img.nav_img(src='../static/upload/'+user.picture, alt='#{user.username}')
+                        li
+                                a(href= '/matches/logout/')  Uitloggen
+section.matches
+    h1 Potentiële matches
+            - for (let i = 0; i < data.length; i++) {
+                    div
+                            div
+                                    h3 Gebruikersnaam: #{data[i].username} 
+                                    img.match_img(src='../static/upload/'+data[i].profilepicture, alt='#{data[i].firstName}')
+                                    button#js-remove.danger(data-id='#{data[i]._id}') Unmatch
+            - }
+>>>>>>> 95c1caf4b96dee333ffac606e1bda8138474137b
 include partials/tail.pug
