@@ -16,14 +16,14 @@ function matches(req, res) {
         if (err) {
             console.log('An error has occured', err);
         } else {
-            let intrest = data[0].interested;
+            let interest = data[0].interested;
             let films = data[0].movie;
             for (let i = films.length + 1; i >= 0; i--) {
-                db.collection('user').find({'gender' : intrest}).toArray(function(err, data) {
+                db.collection('user').find({'gender' : interest}).toArray(function(err, data) {
                     res.render('matches.pug', {
                         data,
                         user: req.session.user,
-                        intrest,
+                        interest,
                         films
                     });
                 });
