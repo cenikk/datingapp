@@ -12,6 +12,7 @@ body {
     background-size: cover;
     background-position: center;
     background-position-y: -1px;
+    background-repeat: no-repeat;
     color: var(--text-color);
 }
 
@@ -59,16 +60,38 @@ section form {
 }
 
 section form legend {
-    font-size: 2rem;
+    font-size: 1.7rem;
     text-align: center;
     font-style: italic;
-    margin-bottom: 4rem;
+    margin-bottom: 1rem;
+    padding-top: 3rem;
 }
 
 section form label {
     font-size: 1.6rem;
     font-weight: 500;
     margin-bottom: .4rem;
+    text-align: center;
+}
+
+section form label[for='profilePic'] {
+    display: grid;
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-align: center;
+    background: #dcdcdc;
+    color: rgb(26, 26, 26);
+    height: 12rem;
+    width: 13rem;
+    border-radius: 100%;
+    justify-items: center;
+    align-items: center;
+    margin: auto;
+    margin-bottom: 2.4rem;
+}
+
+section form input[type="file"] {
+    color: rgb(26, 26, 26);
 }
 
 section form input {
@@ -120,6 +143,39 @@ section form input {
     margin-bottom: 2rem;
 }
 
+.select_interest, .select_interest div {
+    display: grid;
+    justify-items: center;
+    position: relative;
+    min-width: 25.3rem;
+}
+
+.select_interest div {
+    background-color: var(--inputfield-color);
+}
+
+.select_interest div input {
+    position: relative;
+    right: 0rem; top: 1rem;
+}
+
+.select_interest div label {
+    position: absolute;
+    left: 3rem; top: 1rem;
+    color: #3C3C3B;
+    font-weight: lighter;
+}
+
+.select_interest div:nth-child(2) {
+    border-bottom: 1px solid #B2B2B2;
+    border-top-left-radius: 5px; border-top-right-radius: 5px;
+}
+
+.select_interest div:nth-child(3) { 
+    border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; 
+    margin-bottom: 2rem;
+}
+
 .select_dateofbirth, .select_dateofbirth div {
     display: grid;
     justify-items: center;
@@ -151,8 +207,14 @@ section form p {
     margin-bottom: .5rem;
 }
 
-button[type="submit"] {
-    min-width: 25.3rem;
+.register-form {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(3, auto);
+}
+
+.register-form fieldset a, .register-form fieldset button {
+    min-width: 24rem;
     padding: .7rem;
     font-size: 1.5rem;
     letter-spacing: 0.3px;
@@ -160,10 +222,143 @@ button[type="submit"] {
     background-color: var(--button-color);
     border: none;
     border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+}
+
+.login button {
+    min-width: 25.4rem;
+    padding: .7rem;
+    font-size: 1.5rem;
+    letter-spacing: 0.3px;
+    color: #3C3C3B;
+    background-color: var(--button-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+}
+
+fieldset {
+    display: grid;
+    justify-items: center;
+    border: none;
+}
+
+.section1, .section2, .section3 {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    color: var(--textColor);
+    position: relative;
+    transition: all .4s linear;
+    right: 0;
+    left: 0;
+}
+
+.section2 {
+    display: none;
+    left: 20rem;
+    opacity: 0;
+}
+
+.section3 {
+    display: none;
+    left: 20rem;
+    opacity: 0;
+}
+
+.js-disabled {
+    height: auto;
+}
+
+.js-disabled .section1, .js-disabled .section2, .js-disabled .section3 {
+    opacity: 1;
+    display: grid;
+    left: 0;
+}
+
+.js-disabled .register-form, .js-disabled section form {
+    display: block;
+}
+
+.js-disabled input, .js-disabled form fieldset button {
+    margin-left: auto; margin-right: auto;
+}
+
+.js-disabled p, .js-disabled .zipcodeInputs {
+    text-align: center;
+}
+
+.js-disabled legend {
+    padding-top: 0;
+}
+
+.js-disabled .section3 button {
+    margin-bottom: 3rem;
+    min-width: 25.4rem;
+}
+
+.js-disabled .tracker, .js-disabled .section1 p, .js-disabled .section1 a, .js-disabled .section2 p, .js-disabled .section2 a, .js-disabled .section2 legend, .js-disabled .section3 legend  {
+    display: none;
+}
+
+.dateofbirth, .dateofbirth div {
+    display: grid;
+    justify-items: center;
+    position: relative;
+}
+
+.dateofbirth div {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1rem;
+    max-width: 25.4rem;
+}
+
+.dateofbirth div input {
+    width: 78%;
+    padding: .6rem .8rem;
+}
+
+input[id="zipcode"] {
+    max-width: 16.3rem;
+}
+
+input[id="zipcodeLetters"] {
+    max-width: 5rem;
+    margin-left: 1rem;
 }
 
 .profile_img {
     width: 20rem;
+}
+
+.tracker {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+    position: absolute;
+    top: 0rem;
+}
+
+.tracker div {
+    width: 1.2rem;
+    height: 1.2rem;
+    background-color: rgba(202, 202, 202, 0.48);
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.tracker #active {
+    background-color: rgba(40, 137, 216, 0.60);
+}
+
+#tryagain {
+    color: red;
+    margin-top: 4em;
+    font-size: 1em;
 }
 
 @media (max-width: 1300px) {

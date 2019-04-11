@@ -73,7 +73,7 @@ img[alt="logo"] {
     margin: auto; padding: 1.3rem 0;
 }
 
-.profile section div {
+.profile .header section div {
     width: 180px;
     height: 180px;
     position: absolute;
@@ -93,6 +93,7 @@ img[alt="logo"] {
     left: 12.6rem; top: 1.5rem;
     font-size: 2rem; font-weight: normal; letter-spacing: 0.1rem;
     min-width: 40rem;
+    text-transform: capitalize;
 }
 
 .profile section div data-caption {
@@ -123,12 +124,14 @@ img[alt="logo"] {
 
 .profile .content {
     padding-top: 4rem;
+    padding-bottom: 1rem;
 }
 
 .profile .content section {
     height: 20rem;
     width: 65rem;
     margin: auto;
+    margin-bottom: 1rem;
     background-color: #fff;
     padding: 1.1rem 2rem;
     color: rgb(50, 50, 50);
@@ -160,4 +163,61 @@ img[alt="logo"] {
 
 .matches {
     padding: 2rem;
+}
+.matches h3{
+    text-align: center;
+    margin: 0;
+}
+.matches ul{
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+.matches img{
+    display: block;
+    width: 16em;
+}
+.matches li{
+    position: relative;
+    width: 16em;
+    display: inline;
+    border: solid 1px white;
+    padding: 0.1em;
+    margin: 0.5em 0.2em;
+}
+.matches button{
+    position: absolute;
+    bottom: 0.5em;
+    font-size: 1.1em;
+    color: white;
+    border: 0em;
+    opacity: 0.9;
+    transition: all 1s;
+    cursor: pointer;
+}
+.matches button:hover{
+    transform: scale(1.03);
+    opacity: 1.0;
+}
+.unmatch{
+    left: 1em;
+    background-color: red;
+}
+.message{
+    right: 1em;
+    background-color: green;
+}
+
+.movieimg {
+    width: 7rem;
+}
+
+.content section div {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50px, auto));
+    grid-gap: 1rem;
+}
+
+.content figure img {
+    width: 8rem;
 }

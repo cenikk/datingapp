@@ -11,19 +11,13 @@ const uploadFolder = multer({
 
 // Setting up Database
 const mongo = require('mongodb');
-let db = {
-    password: process.env.DB_PASSWORD,
-    username: process.env.DB_USERNAME,
-    cluster: process.env.DB_CLUSTER,
-    host: process.env.DB_HOST,
-    name: process.env.DB_NAME,
-};
+let db = require('./models/db.js');
 const url = `mongodb+srv://${db.username}:${db.password}@${db.cluster}-${db.host}/${db.name}`;
 
 // Connect to Database
 mongo.MongoClient.connect(url, {useNewUrlParser: true}, function (err, client) {
     if (err) {
-        console.log("Failed to connect", err);
+        console.log('Failed to connect', err);
     } else {
         db = client.db(process.env.DB_NAME);
     }
@@ -41,18 +35,11 @@ const sess = {
 };
 
 // Require (load) controllers
-const index = require('./controller/index.js');
-const about = require('./controller/about.js');
-const register = require('./controller/register.js');
-const login = require('./controller/login.js');
-const redirectLogin = require('./controller/redirectLogin.js');
-const profile = require('./controller/profile.js');
-const matches = require('./controller/matches.js');
-const logout = require('./controller/logout.js');
-const remove = require('./controller/remove.js');
-const loginValidation = require('./controller/loginValidation.js');
-const addUser = require('./controller/addUser.js');
-const pageNotFound = require('./controller/pageNotFound.js');
+const loginController = require('./controller/login.js');
+const registerController = require('./controller/register.js');
+const userController = require('./controller/user.js');
+const indexController = require('./controller/index.js');
+const movieController = require('./controller/movie.js');
 
 // Adding methods to my app (express)
 express()
@@ -63,24 +50,27 @@ express()
     .use(session(sess))
     
     // Configure settings for express
-    .set('view engine', 'ejs')
+    .set('view engine', 'pug')
     .set('views', 'view')
     
     // Make different routes (Method(Path, Handler))
-    .get('/', index)
-    .get('/about', about)
-    .get('/register', register)
-    .get('/login', login)
-    .get('/:id', redirectLogin, profile) // Homepage after login
-    .get('/:id/matches', redirectLogin, matches)
-    .get('/:id/logout', redirectLogin, logout)
+    .get('/', indexController.index)
+    .get('/about', indexController.about)
+    .get('/register', registerController.register)
+    .get('/login', loginController.login)
+    .get('/login/error', loginController.wrongCredentials)
+    .get('/:id', loginController.redirectLogin, userController.profile) // Homepage after login
+    .get('/:id/matches', loginController.redirectLogin, userController.matches)
+    .get('/:id/logout', loginController.redirectLogin, userController.logout)
+    .get('/:id/movie', loginController.redirectLogin, movieController.movie)
     
-    .delete('/:id', remove)
+    .delete('/:id', userController.remove)
     
-    .post('/login', loginValidation)
-    .post('/register', uploadFolder.single('profilepicture'), addUser)
+    .post('/login', loginController.loginValidation)
+    .post('/register', uploadFolder.single('profilepicture'), userController.addUser)
+    .post('/:id/movie', movieController.addMovie)
     
-    .use(pageNotFound)
+    .use(indexController.pageNotFound)
     
     // Listen for requests on port (8000)
     .listen(port);

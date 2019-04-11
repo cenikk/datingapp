@@ -1,0 +1,9 @@
+include partials/header-loggedin.pug
+link(rel='stylesheet', type='text/css', href='../../static/css/search.css')
+main.addmovie
+  form(action='#{data.id}', method='POST')
+    label(for='movie') Zoek naar een film
+    input#movie(type='text' name='movie')
+    button(type='submit') Voeg film toe
+  section(id='results')
+include partials/tail.pug

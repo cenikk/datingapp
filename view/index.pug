@@ -1,0 +1,24 @@
+doctype html
+meta(charset='UTF-8')
+meta(name='viewport', content='width=device-width, initial-scale=1')
+link(rel='shortcut icon', type='image/png', href='../../static/img/logo.png')
+link(rel='stylesheet', type='text/css', href='../../static/css/home.css')
+link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.3.1/css/all.css', integrity='sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU', crossorigin='anonymous')
+link(rel='stylesheet', href='https://use.typekit.net/etb5dmm.css')
+title LoveSome
+main
+        header
+                nav
+                        ul
+                                li.logo
+                                        | LoveSome
+                                        img(src='../../static/img/logo.png', alt='logo')
+                                li
+                                        a(href='/register') Registreren
+                                li
+                                        a(href='/login') Inloggen
+        section.home
+                h1 Maak je leven compleet.
+                a(href='/register') Nu gratis aanmelden
+include partials/tail.pug
+
