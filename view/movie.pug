@@ -9,26 +9,26 @@ head
   link(rel='stylesheet' href='https://use.typekit.net/etb5dmm.css')
   title LoveSome
 header
-  nav
-    ul
-      li
-          a(href='/')
-              img(src='../../static/img/logo.png', alt='logo')
-      li
-          a(href= data._id+'/matches')  Blader door Matches
-      li
-          a(href='#')  Likes
-      li
-          a(href='#')  Gesprekken
-      li
-          a(href='#{data.id}')
-              img.nav_img(src='../static/upload/'+data.profilepicture, alt='#{data.firstName}')
-      li
-          a(href= data._id+'/logout')  Uitloggen
+      nav
+          ul
+              li
+                  a(href='/')
+                      img(src='../../static/img/logo.png', alt='logo')
+              li
+                  a(href= data._id+'/matches')  Blader door Matches
+              li
+                  a(href='#')  Likes
+              li
+                  a(href='#')  Gesprekken
+              li
+                  a(href='#{data.id}')
+                      img.nav_img(src='../static/upload/'+data.profilepicture, alt='#{data.firstName}')
+              li
+                  a(href= data._id+'/logout')  Uitloggen
 main.addmovie
-  form(action='#{data.id}', method='POST')
-    label(for='movie') Zoek naar een film
-    input(type='text', name='movie', id='movie')
-    button(type='submit') Voeg film toe
-  section(id="results")
+      form(action='#{data.id}', method='POST')
+          label(for='movie') Zoek naar een film
+          input(type='text', name='movie', id='movie')
+          button(type='submit') Voeg film toe
+      section(id="results")
 include partials/tail.pug
