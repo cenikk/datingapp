@@ -143,6 +143,39 @@ section form input {
     margin-bottom: 2rem;
 }
 
+.select_interest, .select_interest div {
+    display: grid;
+    justify-items: center;
+    position: relative;
+    min-width: 25.3rem;
+}
+
+.select_interest div {
+    background-color: var(--inputfield-color);
+}
+
+.select_interest div input {
+    position: relative;
+    right: 0rem; top: 1rem;
+}
+
+.select_interest div label {
+    position: absolute;
+    left: 3rem; top: 1rem;
+    color: #3C3C3B;
+    font-weight: lighter;
+}
+
+.select_interest div:nth-child(2) {
+    border-bottom: 1px solid #B2B2B2;
+    border-top-left-radius: 5px; border-top-right-radius: 5px;
+}
+
+.select_interest div:nth-child(3) { 
+    border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; 
+    margin-bottom: 2rem;
+}
+
 .select_dateofbirth, .select_dateofbirth div {
     display: grid;
     justify-items: center;

@@ -23,6 +23,7 @@ function addUser(req, res) {
         zipcode: req.body.zipcode,
         zipcodeletters: req.body.zipcodelet,
         profilepicture: req.file ? req.file.filename : null,
+        interested: req.body.interest,
         movie: []
     }, function(err, data) {
         if (err) {
@@ -30,7 +31,7 @@ function addUser(req, res) {
         } else {
             req.session.user = {
                 id: data.insertedId,
-                username: req.body.username,
+                username: req.body.username.toLowerCase(),
                 password: req.body.password,
                 picture: req.file.filename
             };
@@ -70,13 +71,19 @@ function remove(req, res) {
 }
 
 function matches(req, res) {
-    db.collection('user').find().toArray(function(err, data) {
+    db.collection('user').find({ 'username': req.session.user.username }).toArray(function(err, data){
         if (err) {
             console.log('An error has occured', err);
         } else {
-            res.render('matches.pug', {
-                data,
-                user: req.session.user
+            let interest = data[0].interested;
+            let films = data[0].movie;
+            db.collection('user').find({'gender' : interest}).toArray(function(err, data) {
+                res.render('matches.pug', {
+                    data,
+                    user: req.session.user,
+                    interest,
+                    films
+                });
             });
         }
     });
