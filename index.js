@@ -11,13 +11,7 @@ const uploadFolder = multer({
 
 // Setting up Database
 const mongo = require('mongodb');
-let db = {
-    password: process.env.DB_PASSWORD,
-    username: process.env.DB_USERNAME,
-    cluster: process.env.DB_CLUSTER,
-    host: process.env.DB_HOST,
-    name: process.env.DB_NAME,
-};
+let db = require('./models/db.js');
 const url = `mongodb+srv://${db.username}:${db.password}@${db.cluster}-${db.host}/${db.name}`;
 
 // Connect to Database
