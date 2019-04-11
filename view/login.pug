@@ -1,14 +1,14 @@
 include partials/head.pug
 header
-    nav
-        ul
-            li
-                a(href='/')
-                    i.fas.fa-chevron-left
-            li Inloggen
-            li
-                a(href='/')
-                    img(src='../../static/img/logo.png', alt='logo')
+        nav
+                ul
+                        li
+                                a(href='/')
+                                        i.fas.fa-chevron-left
+                        li Inloggen
+                        li
+                                a(href='/')
+                                        img(src='../../static/img/logo.png', alt='logo')
 section.login
 
     form(action='/login', method='POST')
@@ -16,5 +16,5 @@ section.login
         input#username(type='text', name='username')
         label(for='password') Wachtwoord
         input#password(type='password', name='password')
-        button(type='submit') Log in
+        a(type='submit') Log in
 include partials/tail.pug

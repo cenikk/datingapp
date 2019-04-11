@@ -10,29 +10,39 @@ const url = `mongodb+srv://${db.username}:${db.password}@${db.cluster}-${db.host
 
 mongo.MongoClient.connect(url, {useNewUrlParser: true}, function (err, client) {
     if (err) {
-        console.log("Failed to connect", err);
+        console.log('Failed to connect', err);
     } else {
         db = client.db(process.env.DB_NAME);
     }
 });  
 
 function loginValidation(req, res) {
-    db.collection('user').find().toArray(function(err, data) {
-        for (let i = 0; i < data.length; i++) {
-            if (err) {
-                console.log('An error has occured', err);
-            } else if (req.body.username.toLowerCase() === data[i].username && req.body.password === data[i].password) {
-                let id = data[i]._id;
-                req.session.user = {
-                    id: id,
-                    username: req.body.username.toLowerCase(),
-                    password: req.body.password,
-                    picture: data[i].profilepicture
-                };
-                res.redirect('/' + id);
-            }
+    let username = req.body.username.toLowerCase();
+    let password = req.body.password;
+    db.collection('user').findOne({
+        username: username,
+        password: password
+    }, done);
+    
+    function done(err, data) {
+        if(err) {
+            res.json(err);
         }
-    });
+        if (data) {
+            let id = data._id;
+            req.session.user = {
+                id: id,
+                username: req.body.username,
+                password: req.body.password,
+                picture: data.profilepicture
+            };
+            res.redirect('/' + id);
+        } 
+        else {
+            res.redirect('/login/error');
+        }
+    }
 }
 
 module.exports = loginValidation;
+

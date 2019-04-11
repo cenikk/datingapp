@@ -26,5 +26,6 @@ module.exports = {
         "semi": [1, "always"],
         "no-var": [1],
         "no-unused-vars": [2, { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }],
+        "quotes": [1, "single"],
     }
 };
