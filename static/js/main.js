@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 const   searchresult = document.getElementById('results'),
         input = document.querySelector('#movie'),
         remove = document.querySelector('#js-remove');
@@ -7,6 +8,8 @@ let     search = "",
         request = new XMLHttpRequest();
         add = "";
 =======
+=======
+>>>>>>> e2a9691380348363b0f8027577e655b867a07e0b
 const body = document.querySelector('section'),
     searchresult = document.getElementById('results'),
     input = document.querySelector('#movie'),
@@ -21,7 +24,10 @@ let remove = document.querySelector('#js-remove'),
     html = '',
     request = new XMLHttpRequest(),
     add = "";
+<<<<<<< HEAD
 >>>>>>> 95c1caf4b96dee333ffac606e1bda8138474137b
+=======
+>>>>>>> e2a9691380348363b0f8027577e655b867a07e0b
 
 if (body) {
     body.classList.remove('js-disabled');

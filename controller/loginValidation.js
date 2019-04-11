@@ -17,22 +17,6 @@ mongo.MongoClient.connect(url, {useNewUrlParser: true}, function (err, client) {
 });  
 
 function loginValidation(req, res) {
-<<<<<<< HEAD
-    db.collection('user').find().toArray(function(err, data) {
-        for (let i = 0; i < data.length; i++) {
-            if (err) {
-                console.log('An error has occured', err);
-            } else if (req.body.username.toLowerCase() === data[i].username && req.body.password === data[i].password) {
-                let id = data[i]._id;
-                req.session.user = {
-                    id: id,
-                    username: req.body.username.toLowerCase(),
-                    password: req.body.password,
-                    picture: data[i].profilepicture
-                };
-                res.redirect('/' + id);
-            }
-=======
     let username = req.body.username.toLowerCase();
     let password = req.body.password;
     db.collection('user').findOne({
@@ -43,7 +27,6 @@ function loginValidation(req, res) {
     function done(err, data) {
         if(err) {
             res.json(err);
->>>>>>> 95c1caf4b96dee333ffac606e1bda8138474137b
         }
         if (data) {
             let id = data._id;

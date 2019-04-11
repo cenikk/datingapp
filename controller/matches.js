@@ -16,15 +16,15 @@ mongo.MongoClient.connect(url, {useNewUrlParser: true}, function (err, client) {
     }
 });  
 
-async function matches(req, res) {
-
+function matches(req, res) {
+    console.log(req.session.user.username);
     db.collection('user').find({ 'username': req.session.user.username }).toArray(function(err, data){
         if (err) {
             console.log('An error has occured', err);
         } else {
-            var intrest = data[0].interested;
-            var films = data[0].movie;
-            for (var i = films.length + 1; i >= 0; i--) {
+            let intrest = data[0].interested;
+            let films = data[0].movie;
+            for (let i = films.length + 1; i >= 0; i--) {
                 db.collection('user').find({'gender' : intrest}).toArray(function(err, data) {
                     res.render('matches.pug', {
                         data,
