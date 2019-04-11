@@ -3,7 +3,7 @@
 ## Description
 I've build a dynamic prototype of a web application, in this case a dating app. My focus was on being able to register a user and make sure they can upload a profile picture.
 
-![dating-app](https://github.com/cenikk/project-tech/blob/master/assets/wireflow-mijngegevens.png)
+![dating-app](https://github.com/cenikk/datingapp/blob/develop/assets/lovesome.png)
 
 ## How to install this repository
 1. Open your Terminal
