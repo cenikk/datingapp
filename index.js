@@ -65,8 +65,11 @@ const indexController = require('./controller/index.js');
 const index = indexController.index;
 const about = indexController.about;
 const pageNotFound = indexController.pageNotFound;
-const movie = require('./controller/movie.js');
-const addMovie = require('./controller/addMovie.js');
+
+// movie
+const movieController = require('./controller/movie.js');
+const movie = movieController.movie;
+const addMovie = movieController.addMovie;
 
 // Adding methods to my app (express)
 express()
