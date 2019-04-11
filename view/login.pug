@@ -1,14 +1,14 @@
 include partials/head.pug
 header
-    nav
-        ul
-            li
-                a(href='/')
-                    i.fas.fa-chevron-left
-            li Inloggen
-            li
-                a(href='/')
-                    img(src='../../static/img/logo.png', alt='logo')
+        nav
+                ul
+                        li
+                                a(href='/')
+                                        i.fas.fa-chevron-left
+                        li Inloggen
+                        li
+                                a(href='/')
+                                        img(src='../../static/img/logo.png', alt='logo')
 section.login
     form(action='/login', method='POST')
         label(for='username') Gebruikersnaam

@@ -25,6 +25,7 @@ module.exports = {
         "no-eval": [2],
         "semi": [1, "always"],
         "no-var": [1],
-        "no-unused-vars": [1, { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }],
+        "no-unused-vars": [2, { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }],
+        "quotes": [1, "single"],
     }
 };
