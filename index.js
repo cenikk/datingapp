@@ -35,21 +35,35 @@ const sess = {
 };
 
 // Require (load) controllers
-const index = require('./controller/index.js');
-const about = require('./controller/about.js');
-const register = require('./controller/register.js');
-const login = require('./controller/login.js');
-const redirectLogin = require('./controller/redirectLogin.js');
-const profile = require('./controller/profile.js');
-const matches = require('./controller/matches.js');
-const logout = require('./controller/logout.js');
-const remove = require('./controller/remove.js');
-const loginValidation = require('./controller/loginValidation.js');
-const addUser = require('./controller/addUser.js');
-const pageNotFound = require('./controller/pageNotFound.js');
-const movie = require('./controller/movie.js');
-const addMovie = require('./controller/addMovie.js');
-const wrongCredentials = require('./controller/wrongCredentials.js');
+// login
+const loginController = require('./controller/login.js');
+const login = loginController.login;
+const wrongCredentials = loginController.wrongCredentials;
+const loginValidation = loginController.loginValidation;
+const redirectLogin = loginController.redirectLogin;
+
+// register
+const registerController = require('./controller/register.js');
+const register = registerController.register;
+
+// user
+const userController = require('./controller/user.js');
+const addUser = userController.addUser;
+const profile = userController.profile;
+const remove = userController.remove;
+const matches = userController.matches;
+const logout = userController.logout;
+
+// index
+const indexController = require('./controller/index.js');
+const index = indexController.index;
+const about = indexController.about;
+const pageNotFound = indexController.pageNotFound;
+
+// movie
+const movieController = require('./controller/movie.js');
+const movie = movieController.movie;
+const addMovie = movieController.addMovie;
 
 // Adding methods to my app (express)
 express()
