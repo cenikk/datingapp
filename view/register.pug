@@ -4,41 +4,41 @@ section.register.js-disabled
         fieldset.section1#description
             legend Vertel een beetje over jezelf
             label(for='username') Gebruikersnaam
-            input#username(type='text', name='username')
+            input#username(type='text', name='username' required)
             label(for='password') Wachtwoord
             input#password(type='password', name='password')
             .select_gender
                 label(for='gender') Geslacht
                 div
-                    input#man(type='radio', name='gender', value='man')
+                    input#man(type='radio', name='gender', value='man' required)
                     label(for='man') Man
                 div
-                    input#vrouw(type='radio', name='gender', value='vrouw')
+                    input#vrouw(type='radio', name='gender', value='vrouw' required)
                     label(for='vrouw') Vrouw
             .dateofbirth
                 label(for='day') Geboortedatum
                 div
-                    input#day(type='text', name='day', placeholder='Dag')
-                    input#month(type='text', name='month', placeholder='Maand')
-                    input#year(type='text', name='year', placeholder='Jaar')
+                    input#day(type='text', name='day', placeholder='Dag' required)
+                    input#month(type='text', name='month', placeholder='Maand' required)
+                    input#year(type='text', name='year', placeholder='Jaar' required)
             p Deze informatie wordt weergeven aan andere gebruikers
             a(href='#place') Volgende
         fieldset.section2#place
             legend Hey, waar woon je momenteel?
             label(for='country') Land
-            input#country(type='text', name='country' placeholder="Nederland")
+            input#country(type='text', name='country' placeholder="Nederland" required)
             label(for='city') Stad
-            input#city(type='text', name='city' placeholder="Amsterdam")
+            input#city(type='text', name='city' placeholder="Amsterdam" required)
             label(for='zipcode') Postcode
             .zipcodeInputs
-                input#zipcode(type='text', name='zipcode' placeholder="1012")
-                input#zipcodeLetters(type='text', name='zipcodelet' placeholder="AB")
+                input#zipcode(type='text', name='zipcode' placeholder="1012" required)
+                input#zipcodeLetters(type='text', name='zipcodelet' placeholder="AB" required)
             p Deze informatie wordt weergeven aan andere gebruikers
             a(href='#picture') Volgende
         fieldset.section3#picture
             legend Nu nog alleen een foto van jezelf
             label(for='profilePic') Profielfoto
-            input#profilePic(type='file', name='profilepicture', accept='image/*')
+            input#profilePic(type='file', name='profilepicture', accept='image/*' required)
             button(type='submit') Volgende
         .tracker
             .description#active
