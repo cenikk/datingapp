@@ -34,7 +34,7 @@ function loginValidation(req, res) {
             let id = data._id;
             req.session.user = {
                 id: id,
-                username: req.body.username,
+                username: req.body.username.toLowerCase(),
                 password: req.body.password,
                 picture: data.profilepicture
             };
