@@ -23,6 +23,7 @@ function addUser(req, res) {
         zipcode: req.body.zipcode,
         zipcodeletters: req.body.zipcodelet,
         profilepicture: req.file ? req.file.filename : null,
+        interested: req.body.interest,
         movie: []
     }, function(err, data) {
         if (err) {
@@ -30,7 +31,7 @@ function addUser(req, res) {
         } else {
             req.session.user = {
                 id: data.insertedId,
-                username: req.body.username,
+                username: req.body.username.toLowerCase(),
                 password: req.body.password,
                 picture: req.file.filename
             };
