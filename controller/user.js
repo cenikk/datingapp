@@ -1,5 +1,5 @@
 const mongo = require('mongodb');
-let db =require('../models/db.js');
+let db = require('../models/db.js');
 const url = `mongodb+srv://${db.username}:${db.password}@${db.cluster}-${db.host}/${db.name}`;
 
 mongo.MongoClient.connect(url, {useNewUrlParser: true}, function (err, client) {
