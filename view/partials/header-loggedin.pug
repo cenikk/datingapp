@@ -1,0 +1,18 @@
+include head-loggedin.pug
+header
+    nav
+        ul
+            li
+                a(href='/')
+                    img(src='../../static/img/logo.png', alt='logo')
+            li
+                a(href= data._id+'/matches')  Blader door Matches
+            li
+                a(href='#')  Likes
+            li
+                a(href='#')  Gesprekken
+            li
+                a(href='/'+user.id)
+                    img.nav_img(src='../static/upload/'+user.picture, alt=user.username)
+            li
+                a(href= '/matches/logout/')  Uitloggen
