@@ -76,7 +76,7 @@ function renderHTML(data) {
     });
     searchresult.insertAdjacentHTML('beforeend', html);
 
-    add = document.querySelectorAll('#list li');
+    add = document.querySelectorAll('article');
     add.forEach(function(currentBtn){
         currentBtn.addEventListener('click', onadd);
     });
