@@ -20,6 +20,10 @@ I've build a dynamic prototype of a web application, in this case a dating app. 
    ```
    $ npm run start
    ```
+5. To open the application in your browser, open your favorite browser and type:
+   ```
+   localhost:8000
+   ```
 
 ## Package usage
 To see which packages I've used, open the [package.json](https://github.com/cenikk/datingapp/blob/master/package.json) file and look under (dev)dependencies.
