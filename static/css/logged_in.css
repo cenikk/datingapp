@@ -179,7 +179,6 @@ img[alt="logo"] {
 }
 .matches li{
     position: relative;
-    width: 16em;
     display: inline;
     border: solid 1px white;
     padding: 0.1em;
@@ -208,14 +207,54 @@ img[alt="logo"] {
     background-color: green;
 }
 
-.movieimg {
-    width: 7rem;
+.content .movies {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(auto, 150px));
+    grid-gap: 1rem;
+    padding: 1rem 0 2rem 0;
 }
 
-.content section div {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(50px, auto));
-    grid-gap: 1rem;
+.movie h2 {
+    margin: 0;
+}
+
+.movie .image {
+    width: 7rem; height: 10.5rem;
+}
+
+.addmovie {
+    padding: 2rem;
+}
+
+.addmovie form label {
+    font-size: 1.2rem;
+}
+
+.addmovie form input {
+    margin: 0 1rem; padding: .5rem;
+    width: 10rem; height: 1rem;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 3px;
+}
+
+.addmovie form button {
+    min-width: 11rem;
+    padding: 0.4rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    letter-spacing: 0.3px;
+    color: #3C3C3B;
+    background-color: #a7b7ea;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+}
+
+.content section a {
+    color: #476ec5;
 }
 
 .content figure img {
