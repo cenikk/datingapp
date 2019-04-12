@@ -9,21 +9,24 @@ I've build a dynamic prototype of a web application, in this case a dating app. 
 ## How to install this repository
 1. Open your Terminal
 2. To install this repository, type in your terminal  
-   `$ git clone https://github.com/cenikk/datingapp.git`  
+   ```
+   $ git clone https://github.com/cenikk/datingapp.git
+   ```  
 3. To install the Node modules, type in your terminal  
-   `$ npm install`
+   ```
+   $ npm install
+   ```
 4. To run the application, type in your terminal  
-   `$ npm run start`
+   ```
+   $ npm run start
+   ```
 
 ## Package usage
-To see which packages I've used, open the package.json file and look under (dev)dependencies.
+To see which packages I've used, open the [package.json](https://github.com/cenikk/datingapp/blob/master/package.json) file and look under (dev)dependencies.
 
 ## Wiki 
-To see my whole research as well as what my perfect coding setup is, locate to my wiki in pageheader tab. 
+To see my whole research as well as what my perfect coding setup is, locate to my wiki in pageheader tab. Or [click here](https://github.com/cenikk/datingapp/wiki/5.0-Sources).
 > Note: Everything in my Wiki is written in Dutch.
-
-## Sources
-You can see a full list of the sources I've used in my [Wiki](https://github.com/cenikk/datingapp/wiki/5.0-Sources)
 
 ## MongoDB
 Our database stores the users basic information and his/her favorite movies or series.
@@ -32,5 +35,11 @@ To get all the film information were using an Api which is: http://www.omdbapi.c
 Our database design(Api not included)
 ![Database](https://github.com/cenikk/datingapp/blob/develop/assets/database.png)
 
+## Sources
+You can see a full list of the sources I've used in my Wiki under [Page 5.0: Sources](https://github.com/cenikk/datingapp/wiki/5.0-Sources)
+
 ## License 
-MIT
+[MIT](https://opensource.org/licenses/MIT)
+
+### Keywords 
+[Datingapp](https://lovesome-date.herokuapp.com/) - [NodeJS](https://nodejs.org/en/) - [Express](https://expressjs.com/) - [PUG](https://pugjs.org/api/getting-started.html) - [MongoDB](https://www.mongodb.com/) - [HTTP](https://tools.ietf.org/html/rfc2068) - [Project](https://github.com/cmda-bt/) - [CMDA](https://github.com/cmda) - [Backend](https://cmda-bt.github.io/be-course-18-19/docs/) - [Frontend](https://cmda-bt.github.io/fe-course-18-19/docs/) - [Tech](https://cmda-bt.github.io/pt-course-18-19/docs/)
