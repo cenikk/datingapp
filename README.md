@@ -1,4 +1,4 @@
-# datingapp
+# Datingapp
 [Link to website](https://lovesome-date.herokuapp.com)
 
 ## Description
