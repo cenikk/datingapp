@@ -77,7 +77,11 @@ function matches(req, res) {
         } else {
             let interest = data[0].interested;
             let films = data[0].movie;
-            db.collection('user').find({'gender' : interest}).toArray(function(err, data) {
+            console.log(films.id);
+            db.collection('user').find({
+                gender: interest,
+                movie: { $elemMatch: { id: 'Avatar' }}
+            }).toArray(function(err, data) {
                 res.render('matches.pug', {
                     data,
                     user: req.session.user,
