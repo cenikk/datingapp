@@ -70,24 +70,24 @@ function remove(req, res) {
     });
 }
 
-function matches(req, res) {
+async function matches(req, res) {
     db.collection('user').find({ 'username': req.session.user.username }).toArray(function(err, data){
         if (err) {
             console.log('An error has occured', err);
         } else {
             let interest = data[0].interested;
-            let films = data[0].movie;
-            console.log(films.id);
+            let movies = data[0].movie;
+            
             db.collection('user').find({
                 gender: interest,
-                movie: { $elemMatch: { id: 'Avatar' }}
+                movie: { $in : movies}
             }).toArray(function(err, data) {
                 res.render('matches.pug', {
                     data,
                     user: req.session.user,
                     interest,
-                    films
-                });
+                    movies
+                })
             });
         }
     });
