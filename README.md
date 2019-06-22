@@ -1,4 +1,6 @@
-# Datingapp
+# Lovesome
+![dating-app](https://github.com/cenikk/datingapp/blob/master/assets/lovesome.png)
+
 [Link to website](https://lovesome-date.herokuapp.com)
 
 ## Description
@@ -13,8 +15,6 @@ To summarize, you can:
 5. Search a movie through live filtering, and adding this movie to your account.
 6. Match up with people who like the same movies as you.
 7. Log out (this destroys the current session).
-
-![dating-app](https://github.com/cenikk/datingapp/blob/master/assets/lovesome.png)
 
 ## Installation
 
