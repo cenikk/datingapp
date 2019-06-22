@@ -1,16 +1,20 @@
-# datingapp
+# Datingapp
+[Link to website](https://lovesome-date.herokuapp.com)
 
 ## Description
-We've build a dynamic prototype of a web application, in this case a dating app. You can do the following things in this app:
+We've build a dynamic prototype of a web application, in this case a dating app. You are  able to register a user and make sure they can upload a profile picture. After a user registers, a session is being made which stores some of the user's personal data. The user can now add movies that he likes to his profile page via a build-in IMDB API. You also have the option to log back out, which will destroy the session that was created. This way users won't have access to profile pages of other users whenever they're not logged into their account. At last, you also have the option to log back into your account with the username and password you used when registering. 
+
+To summarize, you can:
 
 1. Register an account.
 2. Login with an existing account.
-3. If you login with the wrong credentials, it shows an error.
-4. Being able to upload a profile picture.
-5. Being able to search a movie through live filtering, and adding this movie to your account.
-6. Being able to match up with people who like the same movies as you.
+3. Try to login with the wrong credentials, it will show an error.
+4. Upload a profile picture.
+5. Search a movie through live filtering, and adding this movie to your account.
+6. Match up with people who like the same movies as you.
+7. Log out (this destroys the current session).
 
-![dating-app](https://github.com/cenikk/project-tech/blob/master/assets/wireflow-mijngegevens.png)
+![dating-app](https://github.com/cenikk/datingapp/blob/master/assets/lovesome.png)
 
 ## Installation
 
@@ -39,12 +43,18 @@ To see which packages we've used, open the package.json file and look under (dev
 To see our whole research as well as how we managed to work as a team, locate to our wiki in pageheader tab. 
 > Note: Everything in our Wiki is written in Dutch.
 
-## Sources
-You can see a full list of the sources we've used in our [Wiki](https://github.com/cenikk/datingapp/wiki/5.0-Sources)
-
 ## MongoDB
 Our database stores the users basic information and his/her favorite movies or series.
 To get all the film information were using an Api which is: http://www.omdbapi.com/
 
+## Sources
+You can see a full list of the sources we've used in our [Wiki](https://github.com/cenikk/datingapp/wiki/5.0-Sources)
+
 Our database design(Api not included)
 ![Database](https://github.com/cenikk/datingapp/blob/develop/assets/database.png)
+
+## License 
+[MIT](https://github.com/cenikk/datingapp/blob/master/LICENSE)
+
+## Keywords 
+[Datingapp](https://lovesome-date.herokuapp.com/) - [NodeJS](https://nodejs.org/en/) - [Express](https://expressjs.com/) - [PUG](https://pugjs.org/api/getting-started.html) - [MongoDB](https://www.mongodb.com/) - [HTTP](https://tools.ietf.org/html/rfc2068) - [Project](https://github.com/cmda-bt/) - [CMDA](https://github.com/cmda) - [Backend](https://cmda-bt.github.io/be-course-18-19/docs/) - [Frontend](https://cmda-bt.github.io/fe-course-18-19/docs/) - [Tech](https://cmda-bt.github.io/pt-course-18-19/docs/)
