@@ -202,10 +202,12 @@ img[alt="logo"] {
 .unmatch{
     left: 1em;
     background-color: red;
+    border-radius: 4px;
 }
 .message{
     right: 1em;
     background-color: green;
+    border-radius: 4px;
 }
 
 .movieimg {
