@@ -68,25 +68,62 @@ function remove(req, res) {
         }
     });
 }
-function matches(req, res) {
+
+
+// Eerdere poging om users te laten matchen
+// function matches(req, res) {
+//     db.collection('user').find({ 'username': req.session.user.username }).toArray(function(err, data){
+//         if (err) {
+//             console.log('An error has occured', err);
+//         } else {
+//             let interest = data[0].interested;
+//             let films = data[0].movie;
+//             // for (var i = films.length - 1; i >= 0; i--) {
+//             //     db.collection('user').find({'gender' : intrest ,'movie.${i}.title': films[i].title).toArray(function(err, data) {
+//             //         if (err) {
+//             //             console.log('An error has occured', err);
+//             //         } else {
+//             //             // console.log(data);
+//             //             matches.concat(data);
+//             //         }
+//             //     });
+//             // }
+//             db.collection('user').find({'gender' : interest}).toArray(function(err, data) {
+//                 res.render('matches.pug', {
+//                     data,
+//                     user: req.session.user,
+//                     interest,
+//                     films
+//                 });
+//             });
+//         }
+//     });
+// }
+
+
+// Door het gebruik van $in lukte het op halen van matches wel
+async function matches(req, res) {
     db.collection('user').find({ 'username': req.session.user.username }).toArray(function(err, data){
         if (err) {
             console.log('An error has occured', err);
         } else {
             let interest = data[0].interested;
-            let films = data[0].movie;
-            db.collection('user').find({'gender' : interest}).toArray(function(err, data) {
+            let movies = data[0].movie;
+            
+            db.collection('user').find({
+                gender: interest,
+                movie: { $in : movies}
+            }).toArray(function(err, data) {
                 res.render('matches.pug', {
                     data,
                     user: req.session.user,
                     interest,
-                    films
+                    movies
                 });
-            })
+            });
         }
     });
 }
-
 
 function logout(req, res) {
     req.session.destroy(function (err) {
