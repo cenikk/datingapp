@@ -166,7 +166,8 @@ img[alt="logo"] {
 }
 .matches h3{
     text-align: center;
-    margin: 0;
+    margin: 10 0 0 0;
+    text-transform: capitalize;
 }
 .matches ul{
     list-style: none;
@@ -175,23 +176,26 @@ img[alt="logo"] {
 }
 .matches img{
     display: block;
-    width: 24em;
+    width: 16em;
+    border-bottom: solid 1px white;
 }
 .matches li{
     position: relative;
+    width: 16em;
     display: inline;
-    border: solid 1px white;
+
     padding: 0.1em;
     margin: 0.5em 0.2em;
 }
 .matches button{
     position: absolute;
-    bottom: 0.5em;
+    bottom: 4.7em;
     font-size: 1.1em;
+    padding: 0.3em;
     color: white;
     border: 0em;
     opacity: 0.9;
-    transition: all 1s;
+    transition: all 0.3s;
     cursor: pointer;
 }
 .matches button:hover{
