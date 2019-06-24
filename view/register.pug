@@ -39,6 +39,14 @@ section.register.js-disabled
             legend Nu nog alleen een foto van jezelf
             label(for='profilePic') Profielfoto
             input#profilePic(type='file', name='profilepicture', accept='image/*' required)
+            .select_interest
+                label(for='interest') Interesse in
+                div
+                    input#selectedMan(type='radio', name='interest', value='man' required)
+                    label(for='selectedMan') Mannen
+                div
+                    input#selectedVrouw(type='radio', name='interest', value='vrouw' required)
+                    label(for='selectedVrouw') Vrouwen
             button(type='submit') Volgende
         .tracker
             .description#active

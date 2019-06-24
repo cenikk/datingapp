@@ -35,37 +35,13 @@ const sess = {
 };
 
 // Require (load) controllers
-// login
 const loginController = require('./controller/login.js');
-const login = loginController.login;
-const wrongCredentials = loginController.wrongCredentials;
-const loginValidation = loginController.loginValidation;
-const redirectLogin = loginController.redirectLogin;
-
-// register
 const registerController = require('./controller/register.js');
-const register = registerController.register;
-
-// user
 const userController = require('./controller/user.js');
-const addUser = userController.addUser;
-const profile = userController.profile;
-const remove = userController.remove;
-const matches = userController.matches;
-const logout = userController.logout;
-
-// index
 const indexController = require('./controller/index.js');
-const index = indexController.index;
-const about = indexController.about;
-const pageNotFound = indexController.pageNotFound;
-
-// movie
 const movieController = require('./controller/movie.js');
-const movie = movieController.movie;
-const addMovie = movieController.addMovie;
 
-// Adding methods to my app (express)
+// Adding methods to our app (express)
 express()
     //Serve images, CSS files and JS in a directory called "static"
     .use('/static', express.static('static'))
@@ -78,23 +54,23 @@ express()
     .set('views', 'view')
     
     // Make different routes (Method(Path, Handler))
-    .get('/', index)
-    .get('/about', about)
-    .get('/register', register)
-    .get('/login', login)
-    .get('/:id', redirectLogin, profile) // Homepage after login
-    .get('/:id/matches', redirectLogin, matches)
-    .get('/:id/logout', redirectLogin, logout)
-    .get('/:id/movie', redirectLogin, movie)
-    .get('/login/error', wrongCredentials)
+    .get('/', indexController.index)
+    .get('/about', indexController.about)
+    .get('/register', registerController.register)
+    .get('/login', loginController.login)
+    .get('/login/error', loginController.wrongCredentials)
+    .get('/:id', loginController.redirectLogin, userController.profile) // Homepage after login
+    .get('/:id/matches', loginController.redirectLogin, userController.matches)
+    .get('/:id/logout', loginController.redirectLogin, userController.logout)
+    .get('/:id/movie', loginController.redirectLogin, movieController.movie)
     
-    .delete('/:id', remove)
+    .delete('/:id', userController.remove)
     
-    .post('/login', loginValidation)
-    .post('/register', uploadFolder.single('profilepicture'), addUser)
-    .post('/:id/movie', addMovie)
+    .post('/login', loginController.loginValidation)
+    .post('/register', uploadFolder.single('profilepicture'), userController.addUser)
+    .post('/:id/movie', movieController.addMovie)
     
-    .use(pageNotFound)
+    .use(indexController.pageNotFound)
     
     // Listen for requests on port (8000)
     .listen(port);
