@@ -80,8 +80,9 @@ function matches(req, res) {
         } else {
             let interest = data[0].interested;
             let movies = data[0].movie;
+            
             db.collection('user').find({
-                gender : interest,
+                gender: interest,
                 movie: { $in : movies}
             }).toArray(function(err, data) {
                 res.render('matches.pug', {

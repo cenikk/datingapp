@@ -1,22 +1,32 @@
-section{
+section {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(200px, auto));
-	grid-gap: 2rem;
+	grid-template-columns: repeat(auto-fit, minmax(160px, auto));
+    grid-gap: 1rem;
+    margin-top: 2rem;
 }
-article{
+
+article {
 	display: inline;
 	margin: 0.5em 0.2em;
 	position: relative;
 	transition: 1s all;
 }
-article:hover{
+
+article:hover {
 	transform: scale(1.01);
 	cursor: pointer;
 }
-article img{
-	height: 14em;
+article img {
+    height: 14em;
+    transition: all .3s linear;
 }
-article p{
+
+article img:hover{
+    transform: scale(1.1);
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.4);
+}
+
+article p {
     background-color: black;
     position: absolute;
     bottom: 0.3rem;
