@@ -70,8 +70,11 @@ function remove(req, res) {
     });
 }
 
-async function matches(req, res) {
-    db.collection('user').find({ 'username': req.session.user.username }).toArray(function(err, data){
+function matches(req, res) {
+    db.collection('user').find({ 
+        'username': req.session.user.username, 
+    
+    }).toArray(function(err, data){
         if (err) {
             console.log('An error has occured', err);
         } else {
@@ -86,8 +89,8 @@ async function matches(req, res) {
                     data,
                     user: req.session.user,
                     interest,
-                    movies
-                })
+                    movies,
+                });
             });
         }
     });
