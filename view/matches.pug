@@ -1,7 +1,12 @@
 include partials/header-loggedin.pug
 section.matches
-    h1 Potentiële matches ( #{interest}en )
+ 
+    h1 Potentiële matches (#{interest}en)
+
     p Jouw Keuzes: 
+    - for (let i = 0; i < movies.length; i++)
+            span #{movies[i].title} 
+            
     ul
       - for (let i = 0; i < data.length; i++) {
             li                        
