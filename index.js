@@ -41,7 +41,7 @@ const userController = require('./controller/user.js');
 const indexController = require('./controller/index.js');
 const movieController = require('./controller/movie.js');
 
-// Adding methods to my app (express)
+// Adding methods to our app (express)
 express()
     //Serve images, CSS files and JS in a directory called "static"
     .use('/static', express.static('static'))
