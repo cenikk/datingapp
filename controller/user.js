@@ -89,7 +89,6 @@ function matches(req, res) {
                     user: req.session.user,
                     interest,
                     movies,
-                    movie: { $in : movies }
                 });
             });
         }
