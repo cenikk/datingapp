@@ -70,7 +70,7 @@ function remove(req, res) {
     });
 }
 
-async function matches(req, res) {
+function matches(req, res) {
     db.collection('user').find({ 
         'username': req.session.user.username, 
     
@@ -89,6 +89,7 @@ async function matches(req, res) {
                     user: req.session.user,
                     interest,
                     movies,
+                    movie: { $in : movies }
                 });
             });
         }

@@ -11,5 +11,6 @@ section.matches
                 img.match_img(src='../static/upload/'+data[i].profilepicture, alt=data[i].firstName)
                 button(class='unmatch', id='js-remove', data-id=data[i]._id) Mehh
                 button(class='message') Leuk
+                p #{movies[i].title}
       - }
 include partials/tail.pug
