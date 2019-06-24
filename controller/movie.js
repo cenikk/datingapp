@@ -48,9 +48,11 @@ function addMovie(req, res) {
                     res.redirect('/' + id);
                 }
             });
-        });
+        })
+      .catch(data => {
+        console.log(error.response.data);
+      })
 }
-
 module.exports = {
     movie,
     addMovie
