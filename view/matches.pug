@@ -3,13 +3,13 @@ section.matches
     h1 Potentiële matches (#{interest}en)
     p Jouw Keuzes: 
     - for (let i = 0; i < movies.length; i++)
-            span #{movies[i].title} 
+            span #{movies[i].title}, 
     ul
       - for (let i = 0; i < data.length; i++) {
             li                        
                 h3 #{data[i].username} 
                 img.match_img(src='../static/upload/'+data[i].profilepicture, alt=data[i].firstName)
                 button(class='unmatch', id='js-remove', data-id=data[i]._id) Mehh
-                button(class='message') Leuk
+                a.message(href= '/likes') Leuk
       - }
 include partials/tail.pug

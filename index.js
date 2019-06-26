@@ -40,6 +40,7 @@ const registerController = require('./controller/register.js');
 const userController = require('./controller/user.js');
 const indexController = require('./controller/index.js');
 const movieController = require('./controller/movie.js');
+const likesController = require('./controller/likes.js')
 
 // Adding methods to our app (express)
 express()
@@ -63,12 +64,14 @@ express()
     .get('/:id/matches', loginController.redirectLogin, userController.matches)
     .get('/:id/logout', loginController.redirectLogin, userController.logout)
     .get('/:id/movie', loginController.redirectLogin, movieController.movie)
+    .get('/:id/likes', loginController.redirectLogin, likesController.likes)
     
     .delete('/:id', userController.remove)
     
     .post('/login', loginController.loginValidation)
     .post('/register', uploadFolder.single('profilepicture'), userController.addUser)
     .post('/:id/movie', movieController.addMovie)
+    .post('/:id/likes', likesController.addLike)
     
     .use(indexController.pageNotFound)
     

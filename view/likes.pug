@@ -1,0 +1,22 @@
+include partials/header-loggedin.pug
+body
+    main.profile
+        article.header
+            section
+                div
+                    if user 
+                            img.profile_img(src='../static/upload/'+data.profilepicture, alt='#{data.firstName}')
+                            h1 #{user.username}
+                            data-caption
+                                p 21
+                                span .
+                                p #{data.gender}
+                            |                   
+            section
+                h1 Matches die ik leuk vind
+                - for (let i = 0; i < data.like.length; i++)
+                    li                        
+                        img.match_img(src='../static/upload/'+data[i].profilepicture, alt=data[i].firstName)
+                        h3 #{data[i].username}
+    
+include partials/tail.pug
